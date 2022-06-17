@@ -6,11 +6,19 @@
 //
 
 import UIKit
+import Combine
 
 final class GIFsCollectionViewController: UIViewController {
     
     private let cellIdentifier = "cellIdentifier"
     private let spacing: CGFloat = 10
+    private var cancellable: Set<AnyCancellable> = []
+    
+    private var items: [GIF] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     // MARK: - Properties
     
@@ -34,6 +42,14 @@ final class GIFsCollectionViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Configuration
+    
+    private func configureOutputs() {
+        viewModel.outputs.items
+            .assign(to: \.items, on: self)
+            .store(in: &cancellable)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -44,7 +60,7 @@ extension GIFsCollectionViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->  UICollectionViewCell {

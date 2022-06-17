@@ -11,6 +11,12 @@ final class GIFCell: UICollectionViewCell {
     
     private let imageView: UIImageView = .make()
     
+    var gif: GIF = .placeholder {
+        didSet {
+            updateViews()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -21,6 +27,20 @@ final class GIFCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func updateViews() {
+        DispatchQueue.global().async {
+            do {
+                let data = try Data(contentsOf: self.gif.url)
+                let image = UIImage(data: data)
+                DispatchQueue.main.async {
+                    self.imageView.image = image
+                }
+            } catch let error {
+                print(error)
+            }
+        }
     }
 }
 
@@ -61,4 +81,8 @@ private extension UIImageView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }
+}
+
+extension GIF {
+    static let placeholder = GIF(id: "", url: .init(fileURLWithPath: ""))
 }
