@@ -1,0 +1,624 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC8BA098285CE973009CF8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA097285CE973009CF8F1 /* AppDelegate.swift */; };
+		AC8BA09A285CE973009CF8F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */; };
+		AC8BA09C285CE973009CF8F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA09B285CE973009CF8F1 /* ViewController.swift */; };
+		AC8BA09F285CE973009CF8F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8BA09D285CE973009CF8F1 /* Main.storyboard */; };
+		AC8BA0A2285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0A0285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld */; };
+		AC8BA0A4285CE97C009CF8F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC8BA0A3285CE97C009CF8F1 /* Assets.xcassets */; };
+		AC8BA0A7285CE97C009CF8F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8BA0A5285CE97C009CF8F1 /* LaunchScreen.storyboard */; };
+		AC8BA0B2285CE97D009CF8F1 /* TenorTrialTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0B1285CE97D009CF8F1 /* TenorTrialTaskTests.swift */; };
+		AC8BA0BC285CE97D009CF8F1 /* TenorTrialTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0BB285CE97D009CF8F1 /* TenorTrialTaskUITests.swift */; };
+		AC8BA0BE285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0BD285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC8BA0AE285CE97D009CF8F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC8BA08C285CE973009CF8F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC8BA093285CE973009CF8F1;
+			remoteInfo = TenorTrialTask;
+		};
+		AC8BA0B8285CE97D009CF8F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC8BA08C285CE973009CF8F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC8BA093285CE973009CF8F1;
+			remoteInfo = TenorTrialTask;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AC8BA094285CE973009CF8F1 /* TenorTrialTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenorTrialTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC8BA097285CE973009CF8F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		AC8BA09B285CE973009CF8F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AC8BA09E285CE973009CF8F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AC8BA0A1285CE973009CF8F1 /* TenorTrialTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TenorTrialTask.xcdatamodel; sourceTree = "<group>"; };
+		AC8BA0A3285CE97C009CF8F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC8BA0A6285CE97C009CF8F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC8BA0A8285CE97C009CF8F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC8BA0AD285CE97D009CF8F1 /* TenorTrialTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TenorTrialTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC8BA0B1285CE97D009CF8F1 /* TenorTrialTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorTrialTaskTests.swift; sourceTree = "<group>"; };
+		AC8BA0B7285CE97D009CF8F1 /* TenorTrialTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TenorTrialTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC8BA0BB285CE97D009CF8F1 /* TenorTrialTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorTrialTaskUITests.swift; sourceTree = "<group>"; };
+		AC8BA0BD285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorTrialTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC8BA091285CE973009CF8F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC8BA0AA285CE97D009CF8F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC8BA0B4285CE97D009CF8F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AC8BA08B285CE973009CF8F1 = {
+			isa = PBXGroup;
+			children = (
+				AC8BA096285CE973009CF8F1 /* TenorTrialTask */,
+				AC8BA0B0285CE97D009CF8F1 /* TenorTrialTaskTests */,
+				AC8BA0BA285CE97D009CF8F1 /* TenorTrialTaskUITests */,
+				AC8BA095285CE973009CF8F1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AC8BA095285CE973009CF8F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC8BA094285CE973009CF8F1 /* TenorTrialTask.app */,
+				AC8BA0AD285CE97D009CF8F1 /* TenorTrialTaskTests.xctest */,
+				AC8BA0B7285CE97D009CF8F1 /* TenorTrialTaskUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC8BA096285CE973009CF8F1 /* TenorTrialTask */ = {
+			isa = PBXGroup;
+			children = (
+				AC8BA097285CE973009CF8F1 /* AppDelegate.swift */,
+				AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */,
+				AC8BA09B285CE973009CF8F1 /* ViewController.swift */,
+				AC8BA09D285CE973009CF8F1 /* Main.storyboard */,
+				AC8BA0A3285CE97C009CF8F1 /* Assets.xcassets */,
+				AC8BA0A5285CE97C009CF8F1 /* LaunchScreen.storyboard */,
+				AC8BA0A8285CE97C009CF8F1 /* Info.plist */,
+				AC8BA0A0285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld */,
+			);
+			path = TenorTrialTask;
+			sourceTree = "<group>";
+		};
+		AC8BA0B0285CE97D009CF8F1 /* TenorTrialTaskTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC8BA0B1285CE97D009CF8F1 /* TenorTrialTaskTests.swift */,
+			);
+			path = TenorTrialTaskTests;
+			sourceTree = "<group>";
+		};
+		AC8BA0BA285CE97D009CF8F1 /* TenorTrialTaskUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AC8BA0BB285CE97D009CF8F1 /* TenorTrialTaskUITests.swift */,
+				AC8BA0BD285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift */,
+			);
+			path = TenorTrialTaskUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC8BA093285CE973009CF8F1 /* TenorTrialTask */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC8BA0C1285CE97D009CF8F1 /* Build configuration list for PBXNativeTarget "TenorTrialTask" */;
+			buildPhases = (
+				AC8BA090285CE973009CF8F1 /* Sources */,
+				AC8BA091285CE973009CF8F1 /* Frameworks */,
+				AC8BA092285CE973009CF8F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TenorTrialTask;
+			productName = TenorTrialTask;
+			productReference = AC8BA094285CE973009CF8F1 /* TenorTrialTask.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC8BA0AC285CE97D009CF8F1 /* TenorTrialTaskTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC8BA0C4285CE97D009CF8F1 /* Build configuration list for PBXNativeTarget "TenorTrialTaskTests" */;
+			buildPhases = (
+				AC8BA0A9285CE97D009CF8F1 /* Sources */,
+				AC8BA0AA285CE97D009CF8F1 /* Frameworks */,
+				AC8BA0AB285CE97D009CF8F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC8BA0AF285CE97D009CF8F1 /* PBXTargetDependency */,
+			);
+			name = TenorTrialTaskTests;
+			productName = TenorTrialTaskTests;
+			productReference = AC8BA0AD285CE97D009CF8F1 /* TenorTrialTaskTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AC8BA0B6285CE97D009CF8F1 /* TenorTrialTaskUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC8BA0C7285CE97D009CF8F1 /* Build configuration list for PBXNativeTarget "TenorTrialTaskUITests" */;
+			buildPhases = (
+				AC8BA0B3285CE97D009CF8F1 /* Sources */,
+				AC8BA0B4285CE97D009CF8F1 /* Frameworks */,
+				AC8BA0B5285CE97D009CF8F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC8BA0B9285CE97D009CF8F1 /* PBXTargetDependency */,
+			);
+			name = TenorTrialTaskUITests;
+			productName = TenorTrialTaskUITests;
+			productReference = AC8BA0B7285CE97D009CF8F1 /* TenorTrialTaskUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC8BA08C285CE973009CF8F1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					AC8BA093285CE973009CF8F1 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					AC8BA0AC285CE97D009CF8F1 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = AC8BA093285CE973009CF8F1;
+					};
+					AC8BA0B6285CE97D009CF8F1 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = AC8BA093285CE973009CF8F1;
+					};
+				};
+			};
+			buildConfigurationList = AC8BA08F285CE973009CF8F1 /* Build configuration list for PBXProject "TenorTrialTask" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC8BA08B285CE973009CF8F1;
+			productRefGroup = AC8BA095285CE973009CF8F1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC8BA093285CE973009CF8F1 /* TenorTrialTask */,
+				AC8BA0AC285CE97D009CF8F1 /* TenorTrialTaskTests */,
+				AC8BA0B6285CE97D009CF8F1 /* TenorTrialTaskUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC8BA092285CE973009CF8F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC8BA0A7285CE97C009CF8F1 /* LaunchScreen.storyboard in Resources */,
+				AC8BA0A4285CE97C009CF8F1 /* Assets.xcassets in Resources */,
+				AC8BA09F285CE973009CF8F1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC8BA0AB285CE97D009CF8F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC8BA0B5285CE97D009CF8F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC8BA090285CE973009CF8F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC8BA09C285CE973009CF8F1 /* ViewController.swift in Sources */,
+				AC8BA098285CE973009CF8F1 /* AppDelegate.swift in Sources */,
+				AC8BA0A2285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld in Sources */,
+				AC8BA09A285CE973009CF8F1 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC8BA0A9285CE97D009CF8F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC8BA0B2285CE97D009CF8F1 /* TenorTrialTaskTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC8BA0B3285CE97D009CF8F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC8BA0BC285CE97D009CF8F1 /* TenorTrialTaskUITests.swift in Sources */,
+				AC8BA0BE285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC8BA0AF285CE97D009CF8F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC8BA093285CE973009CF8F1 /* TenorTrialTask */;
+			targetProxy = AC8BA0AE285CE97D009CF8F1 /* PBXContainerItemProxy */;
+		};
+		AC8BA0B9285CE97D009CF8F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC8BA093285CE973009CF8F1 /* TenorTrialTask */;
+			targetProxy = AC8BA0B8285CE97D009CF8F1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AC8BA09D285CE973009CF8F1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC8BA09E285CE973009CF8F1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AC8BA0A5285CE97C009CF8F1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC8BA0A6285CE97C009CF8F1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC8BA0BF285CE97D009CF8F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AC8BA0C0285CE97D009CF8F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC8BA0C2285CE97D009CF8F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 276537L7BW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TenorTrialTask/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VasylMytko.TenorTrialTask;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AC8BA0C3285CE97D009CF8F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 276537L7BW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TenorTrialTask/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VasylMytko.TenorTrialTask;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AC8BA0C5285CE97D009CF8F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 276537L7BW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VasylMytko.TenorTrialTaskTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TenorTrialTask.app/TenorTrialTask";
+			};
+			name = Debug;
+		};
+		AC8BA0C6285CE97D009CF8F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 276537L7BW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VasylMytko.TenorTrialTaskTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TenorTrialTask.app/TenorTrialTask";
+			};
+			name = Release;
+		};
+		AC8BA0C8285CE97D009CF8F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 276537L7BW;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VasylMytko.TenorTrialTaskUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TenorTrialTask;
+			};
+			name = Debug;
+		};
+		AC8BA0C9285CE97D009CF8F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 276537L7BW;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VasylMytko.TenorTrialTaskUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TenorTrialTask;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC8BA08F285CE973009CF8F1 /* Build configuration list for PBXProject "TenorTrialTask" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC8BA0BF285CE97D009CF8F1 /* Debug */,
+				AC8BA0C0285CE97D009CF8F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC8BA0C1285CE97D009CF8F1 /* Build configuration list for PBXNativeTarget "TenorTrialTask" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC8BA0C2285CE97D009CF8F1 /* Debug */,
+				AC8BA0C3285CE97D009CF8F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC8BA0C4285CE97D009CF8F1 /* Build configuration list for PBXNativeTarget "TenorTrialTaskTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC8BA0C5285CE97D009CF8F1 /* Debug */,
+				AC8BA0C6285CE97D009CF8F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC8BA0C7285CE97D009CF8F1 /* Build configuration list for PBXNativeTarget "TenorTrialTaskUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC8BA0C8285CE97D009CF8F1 /* Debug */,
+				AC8BA0C9285CE97D009CF8F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AC8BA0A0285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AC8BA0A1285CE973009CF8F1 /* TenorTrialTask.xcdatamodel */,
+			);
+			currentVersion = AC8BA0A1285CE973009CF8F1 /* TenorTrialTask.xcdatamodel */;
+			path = TenorTrialTask.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AC8BA08C285CE973009CF8F1 /* Project object */;
+}
