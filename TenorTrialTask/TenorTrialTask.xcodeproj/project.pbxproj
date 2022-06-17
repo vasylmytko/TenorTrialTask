@@ -16,6 +16,9 @@
 		AC8BA0B2285CE97D009CF8F1 /* TenorTrialTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0B1285CE97D009CF8F1 /* TenorTrialTaskTests.swift */; };
 		AC8BA0BC285CE97D009CF8F1 /* TenorTrialTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0BB285CE97D009CF8F1 /* TenorTrialTaskUITests.swift */; };
 		AC8BA0BE285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0BD285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift */; };
+		AC8BA0CB285D01B7009CF8F1 /* GIFsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CA285D01B7009CF8F1 /* GIFsCollectionViewController.swift */; };
+		AC8BA0CE285D01F5009CF8F1 /* GIFsCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CD285D01F5009CF8F1 /* GIFsCollectionViewModel.swift */; };
+		AC8BA0D0285D04E9009CF8F1 /* GIFCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		AC8BA0B7285CE97D009CF8F1 /* TenorTrialTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TenorTrialTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC8BA0BB285CE97D009CF8F1 /* TenorTrialTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorTrialTaskUITests.swift; sourceTree = "<group>"; };
 		AC8BA0BD285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorTrialTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AC8BA0CA285D01B7009CF8F1 /* GIFsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFsCollectionViewController.swift; sourceTree = "<group>"; };
+		AC8BA0CD285D01F5009CF8F1 /* GIFsCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFsCollectionViewModel.swift; sourceTree = "<group>"; };
+		AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 		AC8BA096285CE973009CF8F1 /* TenorTrialTask */ = {
 			isa = PBXGroup;
 			children = (
+				AC8BA0CC285D01DA009CF8F1 /* Collection */,
 				AC8BA097285CE973009CF8F1 /* AppDelegate.swift */,
 				AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */,
 				AC8BA09B285CE973009CF8F1 /* ViewController.swift */,
@@ -125,6 +132,16 @@
 				AC8BA0BD285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift */,
 			);
 			path = TenorTrialTaskUITests;
+			sourceTree = "<group>";
+		};
+		AC8BA0CC285D01DA009CF8F1 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				AC8BA0CA285D01B7009CF8F1 /* GIFsCollectionViewController.swift */,
+				AC8BA0CD285D01F5009CF8F1 /* GIFsCollectionViewModel.swift */,
+				AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */,
+			);
+			path = Collection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC8BA09C285CE973009CF8F1 /* ViewController.swift in Sources */,
+				AC8BA0CE285D01F5009CF8F1 /* GIFsCollectionViewModel.swift in Sources */,
+				AC8BA0D0285D04E9009CF8F1 /* GIFCell.swift in Sources */,
+				AC8BA0CB285D01B7009CF8F1 /* GIFsCollectionViewController.swift in Sources */,
 				AC8BA098285CE973009CF8F1 /* AppDelegate.swift in Sources */,
 				AC8BA0A2285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld in Sources */,
 				AC8BA09A285CE973009CF8F1 /* SceneDelegate.swift in Sources */,
