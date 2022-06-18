@@ -41,6 +41,7 @@ final class DefaultDataService: DataService {
                 completion(.failure(error))
             }
         }
+        .resume()
     }
 }
 

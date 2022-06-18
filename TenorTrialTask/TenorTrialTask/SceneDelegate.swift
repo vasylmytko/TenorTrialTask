@@ -15,10 +15,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
+        let tabBarController = UITabBarController()
+        
         let viewModel = DefaultGIFsCollectionViewModel()
-        let viewController = GIFsCollectionViewController(viewModel: viewModel)
-        let navigationController = UINavigationController(rootViewController: viewController)
-        window.rootViewController = navigationController
+        let gifsCollectionController = GIFsCollectionViewController(viewModel: viewModel)
+
+        let favouriteController = ViewController()
+        favouriteController.view.backgroundColor = .green
+        
+        let gifsNavigationController = UINavigationController(rootViewController: gifsCollectionController)
+        gifsNavigationController.tabBarItem = .init(title: "GIFs", image: nil, tag: 0)
+        let favouriteNavigationController = UINavigationController(rootViewController: favouriteController)
+        favouriteNavigationController.tabBarItem = .init(title: "Favourites", image: nil, tag: 0)
+        
+        tabBarController.setViewControllers([gifsNavigationController, favouriteNavigationController], animated: false)
+        tabBarController.tabBar.backgroundColor = #colorLiteral(red: 0.1862384677, green: 0.5898670554, blue: 0.9156925678, alpha: 1)
+        tabBarController.tabBar.tintColor = .white
+        
+        window.rootViewController = tabBarController
         self.window = window
         window.makeKeyAndVisible()
     }

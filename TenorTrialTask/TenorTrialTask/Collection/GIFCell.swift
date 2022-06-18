@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class GIFCell: UICollectionViewCell {
     
-    private let imageView: UIImageView = .make()
+    private let imageView: SDAnimatedImageView = .make()
+    private var dataTask: URLSessionDataTask?
     
     var gif: GIF = .placeholder {
         didSet {
@@ -29,18 +31,13 @@ final class GIFCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        dataTask?.cancel()
+    }
+    
     private func updateViews() {
-        DispatchQueue.global().async {
-            do {
-                let data = try Data(contentsOf: self.gif.url)
-                let image = UIImage(data: data)
-                DispatchQueue.main.async {
-                    self.imageView.image = image
-                }
-            } catch let error {
-                print(error)
-            }
-        }
+        imageView.sd_setImage(with: gif.url, placeholderImage: nil, options: [.progressiveLoad])
     }
 }
 
@@ -48,7 +45,6 @@ final class GIFCell: UICollectionViewCell {
 
 private extension GIFCell {
     func configureSubviews() {
-        contentView.backgroundColor = .yellow
     }
 }
 
@@ -75,9 +71,9 @@ private extension GIFCell {
 
 // MARK: - Factories
 
-private extension UIImageView {
-    static func make() -> UIImageView {
-        let imageView = UIImageView()
+private extension SDAnimatedImageView {
+    static func make() -> SDAnimatedImageView {
+        let imageView = SDAnimatedImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }
