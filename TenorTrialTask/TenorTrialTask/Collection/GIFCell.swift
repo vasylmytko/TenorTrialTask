@@ -45,6 +45,8 @@ final class GIFCell: UICollectionViewCell {
 
 private extension GIFCell {
     func configureSubviews() {
+        layer.cornerRadius = 10
+        layer.masksToBounds = true
     }
 }
 

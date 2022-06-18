@@ -14,6 +14,8 @@ final class GIFsCollectionViewController: UIViewController {
     private let spacing: CGFloat = 10
     private var cancellable: Set<AnyCancellable> = []
     
+    private let searchController: UISearchController = .init()
+    
     private var items: [GIF] = [] {
         didSet {
             collectionView.reloadData()
@@ -34,6 +36,9 @@ final class GIFsCollectionViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        navigationItem.title = "GIFs"
         configureSubviews()
         configureViewHierarchy()
         configureLayout()
@@ -58,6 +63,14 @@ final class GIFsCollectionViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .assign(to: \.items, on: self)
             .store(in: &cancellable)
+    }
+}
+
+// MARK: - SearchControllerDelegate
+
+extension GIFsCollectionViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        viewModel.inputs.search.send(searchController.searchBar.text)
     }
 }
 
@@ -95,6 +108,10 @@ extension GIFsCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return spacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        viewModel.inputs.indexWillBeDisplayed.send(indexPath)
     }
 }
 

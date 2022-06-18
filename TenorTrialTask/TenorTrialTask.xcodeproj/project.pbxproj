@@ -19,7 +19,6 @@
 		AC8BA0CB285D01B7009CF8F1 /* GIFsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CA285D01B7009CF8F1 /* GIFsCollectionViewController.swift */; };
 		AC8BA0CE285D01F5009CF8F1 /* GIFsCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CD285D01F5009CF8F1 /* GIFsCollectionViewModel.swift */; };
 		AC8BA0D0285D04E9009CF8F1 /* GIFCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */; };
-		ACABA090285DF02E00FD7067 /* UIImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACABA08F285DF02E00FD7067 /* UIImage+GIF.swift */; };
 		ACABA096285E0ACB00FD7067 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = ACABA095285E0ACB00FD7067 /* SDWebImage */; };
 		ACABA098285E56ED00FD7067 /* GIFsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACABA097285E56ED00FD7067 /* GIFsRepository.swift */; };
 		ACABA09D285E6A0300FD7067 /* Tenor-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACABA09C285E6A0300FD7067 /* Tenor-Info.plist */; };
@@ -60,7 +59,6 @@
 		AC8BA0CA285D01B7009CF8F1 /* GIFsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFsCollectionViewController.swift; sourceTree = "<group>"; };
 		AC8BA0CD285D01F5009CF8F1 /* GIFsCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFsCollectionViewModel.swift; sourceTree = "<group>"; };
 		AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCell.swift; sourceTree = "<group>"; };
-		ACABA08F285DF02E00FD7067 /* UIImage+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+GIF.swift"; sourceTree = "<group>"; };
 		ACABA097285E56ED00FD7067 /* GIFsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFsRepository.swift; sourceTree = "<group>"; };
 		ACABA09C285E6A0300FD7067 /* Tenor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tenor-Info.plist"; sourceTree = "<group>"; };
 		ACED9835285D0FDC004395B0 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				ACABA09B285E69DC00FD7067 /* Utils */,
-				ACABA08E285DF01900FD7067 /* Extensions */,
 				ACED9834285D0FC5004395B0 /* Network */,
 				AC8BA0CC285D01DA009CF8F1 /* Collection */,
 				AC8BA097285CE973009CF8F1 /* AppDelegate.swift */,
@@ -124,7 +121,6 @@
 				AC8BA09B285CE973009CF8F1 /* ViewController.swift */,
 				AC8BA0A3285CE97C009CF8F1 /* Assets.xcassets */,
 				AC8BA0A5285CE97C009CF8F1 /* LaunchScreen.storyboard */,
-				AC8BA0A8285CE97C009CF8F1 /* Info.plist */,
 				AC8BA0A0285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld */,
 			);
 			path = TenorTrialTask;
@@ -158,17 +154,10 @@
 			path = Collection;
 			sourceTree = "<group>";
 		};
-		ACABA08E285DF01900FD7067 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				ACABA08F285DF02E00FD7067 /* UIImage+GIF.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		ACABA09B285E69DC00FD7067 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AC8BA0A8285CE97C009CF8F1 /* Info.plist */,
 				ACABA09C285E6A0300FD7067 /* Tenor-Info.plist */,
 			);
 			path = Utils;
@@ -320,7 +309,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC8BA09C285CE973009CF8F1 /* ViewController.swift in Sources */,
-				ACABA090285DF02E00FD7067 /* UIImage+GIF.swift in Sources */,
 				AC8BA0CE285D01F5009CF8F1 /* GIFsCollectionViewModel.swift in Sources */,
 				AC8BA0D0285D04E9009CF8F1 /* GIFCell.swift in Sources */,
 				AC8BA0CB285D01B7009CF8F1 /* GIFsCollectionViewController.swift in Sources */,
@@ -499,7 +487,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 276537L7BW;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TenorTrialTask/Info.plist;
+				INFOPLIST_FILE = TenorTrialTask/Utils/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -526,7 +514,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 276537L7BW;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TenorTrialTask/Info.plist;
+				INFOPLIST_FILE = TenorTrialTask/Utils/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
