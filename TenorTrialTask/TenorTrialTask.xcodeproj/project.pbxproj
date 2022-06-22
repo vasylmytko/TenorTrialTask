@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC21CFF12863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC21CFF02863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift */; };
+		AC32B484285FC8E800AD9458 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC32B483285FC8E800AD9458 /* FavouritesViewController.swift */; };
+		AC32B486285FC8F200AD9458 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC32B485285FC8F100AD9458 /* FavouritesViewModel.swift */; };
+		AC72FFCF28623194008F6B21 /* GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFCE28623194008F6B21 /* GIF.swift */; };
+		AC72FFD1286231E7008F6B21 /* TenorGIFsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFD0286231E7008F6B21 /* TenorGIFsResponse.swift */; };
+		AC72FFD32862347D008F6B21 /* FavouritesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFD22862347D008F6B21 /* FavouritesStorage.swift */; };
+		AC72FFD628623527008F6B21 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFD528623527008F6B21 /* CoreDataManager.swift */; };
+		AC72FFD928623AB2008F6B21 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AC72FFD828623AB2008F6B21 /* CombineCocoa */; };
+		AC72FFDB28623BA7008F6B21 /* FetchGIFsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFDA28623BA7008F6B21 /* FetchGIFsUseCase.swift */; };
+		AC72FFDD28624D72008F6B21 /* GIFPaginatedRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFDC28624D72008F6B21 /* GIFPaginatedRepository.swift */; };
 		AC8BA098285CE973009CF8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA097285CE973009CF8F1 /* AppDelegate.swift */; };
 		AC8BA09A285CE973009CF8F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */; };
 		AC8BA09C285CE973009CF8F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA09B285CE973009CF8F1 /* ViewController.swift */; };
@@ -43,6 +53,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC21CFF02863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewDiffableDataSource+SnapshotSubscriber.swift"; sourceTree = "<group>"; };
+		AC32B483285FC8E800AD9458 /* FavouritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
+		AC32B485285FC8F100AD9458 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
+		AC72FFCE28623194008F6B21 /* GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIF.swift; sourceTree = "<group>"; };
+		AC72FFD0286231E7008F6B21 /* TenorGIFsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorGIFsResponse.swift; sourceTree = "<group>"; };
+		AC72FFD22862347D008F6B21 /* FavouritesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesStorage.swift; sourceTree = "<group>"; };
+		AC72FFD528623527008F6B21 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		AC72FFDA28623BA7008F6B21 /* FetchGIFsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGIFsUseCase.swift; sourceTree = "<group>"; };
+		AC72FFDC28624D72008F6B21 /* GIFPaginatedRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFPaginatedRepository.swift; sourceTree = "<group>"; };
 		AC8BA094285CE973009CF8F1 /* TenorTrialTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenorTrialTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC8BA097285CE973009CF8F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC72FFD928623AB2008F6B21 /* CombineCocoa in Frameworks */,
 				ACABA096285E0ACB00FD7067 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +110,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC21CFEF2863A50000BF9E07 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AC21CFF02863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		AC32B487285FC8FE00AD9458 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				AC32B483285FC8E800AD9458 /* FavouritesViewController.swift */,
+				AC32B485285FC8F100AD9458 /* FavouritesViewModel.swift */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		AC72FFCD28623183008F6B21 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AC72FFCE28623194008F6B21 /* GIF.swift */,
+				AC72FFDA28623BA7008F6B21 /* FetchGIFsUseCase.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AC72FFD428623511008F6B21 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				AC72FFD22862347D008F6B21 /* FavouritesStorage.swift */,
+				AC72FFD528623527008F6B21 /* CoreDataManager.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		AC8BA08B285CE973009CF8F1 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +168,10 @@
 		AC8BA096285CE973009CF8F1 /* TenorTrialTask */ = {
 			isa = PBXGroup;
 			children = (
+				AC21CFEF2863A50000BF9E07 /* Helpers */,
+				AC72FFD428623511008F6B21 /* Storage */,
+				AC72FFCD28623183008F6B21 /* Domain */,
+				AC32B487285FC8FE00AD9458 /* Favourites */,
 				ACABA09B285E69DC00FD7067 /* Utils */,
 				ACED9834285D0FC5004395B0 /* Network */,
 				AC8BA0CC285D01DA009CF8F1 /* Collection */,
@@ -149,7 +208,7 @@
 				AC8BA0CA285D01B7009CF8F1 /* GIFsCollectionViewController.swift */,
 				AC8BA0CD285D01F5009CF8F1 /* GIFsCollectionViewModel.swift */,
 				AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */,
-				ACABA097285E56ED00FD7067 /* GIFsRepository.swift */,
+				AC72FFDC28624D72008F6B21 /* GIFPaginatedRepository.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -166,7 +225,9 @@
 		ACED9834285D0FC5004395B0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				ACABA097285E56ED00FD7067 /* GIFsRepository.swift */,
 				ACED9835285D0FDC004395B0 /* DataService.swift */,
+				AC72FFD0286231E7008F6B21 /* TenorGIFsResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -189,6 +250,7 @@
 			name = TenorTrialTask;
 			packageProductDependencies = (
 				ACABA095285E0ACB00FD7067 /* SDWebImage */,
+				AC72FFD828623AB2008F6B21 /* CombineCocoa */,
 			);
 			productName = TenorTrialTask;
 			productReference = AC8BA094285CE973009CF8F1 /* TenorTrialTask.app */;
@@ -264,6 +326,7 @@
 			mainGroup = AC8BA08B285CE973009CF8F1;
 			packageReferences = (
 				ACABA094285E0ACB00FD7067 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				AC72FFD728623AB2008F6B21 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 			);
 			productRefGroup = AC8BA095285CE973009CF8F1 /* Products */;
 			projectDirPath = "";
@@ -308,14 +371,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC32B486285FC8F200AD9458 /* FavouritesViewModel.swift in Sources */,
 				AC8BA09C285CE973009CF8F1 /* ViewController.swift in Sources */,
 				AC8BA0CE285D01F5009CF8F1 /* GIFsCollectionViewModel.swift in Sources */,
+				AC72FFD628623527008F6B21 /* CoreDataManager.swift in Sources */,
 				AC8BA0D0285D04E9009CF8F1 /* GIFCell.swift in Sources */,
 				AC8BA0CB285D01B7009CF8F1 /* GIFsCollectionViewController.swift in Sources */,
+				AC21CFF12863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift in Sources */,
 				AC8BA098285CE973009CF8F1 /* AppDelegate.swift in Sources */,
+				AC72FFD1286231E7008F6B21 /* TenorGIFsResponse.swift in Sources */,
+				AC72FFCF28623194008F6B21 /* GIF.swift in Sources */,
+				AC72FFD32862347D008F6B21 /* FavouritesStorage.swift in Sources */,
 				ACABA098285E56ED00FD7067 /* GIFsRepository.swift in Sources */,
 				AC8BA0A2285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld in Sources */,
 				AC8BA09A285CE973009CF8F1 /* SceneDelegate.swift in Sources */,
+				AC72FFDB28623BA7008F6B21 /* FetchGIFsUseCase.swift in Sources */,
+				AC72FFDD28624D72008F6B21 /* GIFPaginatedRepository.swift in Sources */,
+				AC32B484285FC8E800AD9458 /* FavouritesViewController.swift in Sources */,
 				ACED9836285D0FDC004395B0 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,6 +722,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AC72FFD728623AB2008F6B21 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
 		ACABA094285E0ACB00FD7067 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
@@ -661,6 +741,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AC72FFD828623AB2008F6B21 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC72FFD728623AB2008F6B21 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
 		ACABA095285E0ACB00FD7067 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ACABA094285E0ACB00FD7067 /* XCRemoteSwiftPackageReference "SDWebImage" */;

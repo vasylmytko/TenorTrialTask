@@ -35,7 +35,12 @@ final class DefaultDataService: DataService {
                 return
             }
             do {
+                let object = try JSONSerialization.jsonObject(with: data, options: [])
+                let data = try JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted])
+                let prettyPrintedString = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
                 let decodedResponse = try self.decoder.decode(type, from: data)
+                
+                
                 completion(.success(decodedResponse))
             } catch let error {
                 completion(.failure(error))

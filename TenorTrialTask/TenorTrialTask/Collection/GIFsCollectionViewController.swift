@@ -7,41 +7,37 @@
 
 import UIKit
 import Combine
+import CombineCocoa
 
 final class GIFsCollectionViewController: UIViewController {
-    
-    private let cellIdentifier = "cellIdentifier"
-    private let spacing: CGFloat = 10
-    private var cancellable: Set<AnyCancellable> = []
-    
-    private let searchController: UISearchController = .init()
-    
-    private var items: [GIF] = [] {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
-    
-    // MARK: - Properties
-    
-    private let viewModel: GIFsCollectionViewModel
-    
+        
     // MARK: - UI properties
     
+    private let searchController: UISearchController = .init()
     private let collectionView: UICollectionView = .make()
+
+    // MARK: - Helper properties
+        
+    private var cancellable: Set<AnyCancellable> = []
+    private let dataSource: SingleSectionCollectionViewDataSource<GIF>
+    
+    // MARK: - Dependencies
+    
+    private let viewModel: GIFsCollectionViewModel
     
     // MARK: - Constructors
     
     init(viewModel: GIFsCollectionViewModel) {
         self.viewModel = viewModel
+        self.dataSource = .make(collectionView: collectionView)
+        self.collectionView.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
         
         navigationItem.searchController = searchController
-        searchController.searchResultsUpdater = self
         navigationItem.title = "GIFs"
-        configureSubviews()
         configureViewHierarchy()
         configureLayout()
+        configureInputs()
         configureOutputs()
     }
     
@@ -58,70 +54,26 @@ final class GIFsCollectionViewController: UIViewController {
     
     // MARK: - Configuration
     
-    private func configureOutputs() {
-        viewModel.outputs.items
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.items, on: self)
+    private func configureInputs() {
+        collectionView.willDisplayCellPublisher
+            .map(\.indexPath)
+            .subscribe(viewModel.inputs.indexWillBeDisplayed)
+            .store(in: &cancellable)
+        
+        collectionView.didSelectItemPublisher
+            .subscribe(viewModel.inputs.selectedIndexPath)
+            .store(in: &cancellable)
+        
+        searchController.searchBar.textDidChangePublisher
+            .map { Optional($0) }
+            .subscribe(viewModel.inputs.search)
             .store(in: &cancellable)
     }
-}
-
-// MARK: - SearchControllerDelegate
-
-extension GIFsCollectionViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        viewModel.inputs.search.send(searchController.searchBar.text)
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension GIFsCollectionViewController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->  UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-        guard let gifCell = cell as? GIFCell else {
-            return cell
-        }
-        gifCell.gif = items[indexPath.item]
-        return gifCell
-    }
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension GIFsCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: (collectionView.frame.width / 2) - spacing * 2, height: 150)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return spacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return spacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        viewModel.inputs.indexWillBeDisplayed.send(indexPath)
-    }
-}
-
-// MARK: - Subviews
-
-private extension GIFsCollectionViewController {
-    func configureSubviews() {
-        collectionView.register(GIFCell.self, forCellWithReuseIdentifier: cellIdentifier)
-        collectionView.dataSource = self
-        collectionView.delegate = self
+    private func configureOutputs() {
+        viewModel.outputs.snapshot
+            .receive(on: DispatchQueue.main)
+            .subscribe(dataSource.snapshotSubscriber(animated: true))
     }
 }
 
@@ -145,15 +97,29 @@ private extension GIFsCollectionViewController {
         ])
     }
 }
- 
+
 // MARK: - Factories
 
-private extension UICollectionView {
+extension UICollectionView {
     static func make() -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
+        layout.itemSize = .init(width: 180, height: 180)
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 10
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(GIFCell.self, forCellWithReuseIdentifier: GIFCell.cellIdentifier)
         collectionView.alwaysBounceVertical = true
         return collectionView
+    }
+}
+
+extension UICollectionViewDiffableDataSource where SectionIdentifierType == SingleSection, ItemIdentifierType == GIF {
+    static func make(collectionView: UICollectionView) -> SingleSectionCollectionViewDataSource<GIF> {
+        return .init(collectionView: collectionView) { collectionView, indexPath, item in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GIFCell.cellIdentifier, for: indexPath) as? GIFCell
+            cell?.gif = item
+            return cell
+        }
     }
 }
