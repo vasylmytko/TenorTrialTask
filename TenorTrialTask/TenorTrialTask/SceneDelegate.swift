@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,18 +20,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let viewModel = DefaultGIFsCollectionViewModel()
         let gifsCollectionController = GIFsCollectionViewController(viewModel: viewModel)
-
-        let favouriteController = ViewController()
-        favouriteController.view.backgroundColor = .green
-        
         let gifsNavigationController = UINavigationController(rootViewController: gifsCollectionController)
-        gifsNavigationController.tabBarItem = .init(title: "GIFs", image: nil, tag: 0)
+        gifsNavigationController.tabBarItem = .init(
+            title: "Search",
+            image: UIImage(systemName: "magnifyingglass"),
+            tag: 0
+        )
+
+        let sortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: false)
+        let fetchRequest: NSFetchRequest<GifMO> = GifMO.fetchRequest()
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        let fetchedResultController = GIFFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: DefaultCoreDataManager.shared.managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        let favouritesViewModel = DefaultFavouritesViewModel(fetchedResultsController: fetchedResultController)
+        let favouriteController = FavouritesViewController(viewModel: favouritesViewModel)
         let favouriteNavigationController = UINavigationController(rootViewController: favouriteController)
-        favouriteNavigationController.tabBarItem = .init(title: "Favourites", image: nil, tag: 0)
+        favouriteNavigationController.tabBarItem = .init(
+            title: "Favourites",
+            image: UIImage(systemName: "star.fill"),
+            tag: 0
+        )
         
         tabBarController.setViewControllers([gifsNavigationController, favouriteNavigationController], animated: false)
-        tabBarController.tabBar.backgroundColor = #colorLiteral(red: 0.1862384677, green: 0.5898670554, blue: 0.9156925678, alpha: 1)
-        tabBarController.tabBar.tintColor = .white
+        tabBarController.tabBar.tintColor = .systemBlue
+        tabBarController.tabBar.unselectedItemTintColor = .gray
         
         window.rootViewController = tabBarController
         self.window = window

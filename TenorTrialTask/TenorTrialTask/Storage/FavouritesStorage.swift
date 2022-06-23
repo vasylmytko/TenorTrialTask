@@ -9,7 +9,8 @@ import Foundation
 import CoreData
 
 protocol FavouritesStorage {
-    func update(gif: GIF)
+    func add(gif: GIF)
+    func remove(gif: GIF)
     func isFavourite(gif: GIF) -> Bool
 }
 
@@ -21,20 +22,27 @@ final class CoreDataFavouritesStorage: FavouritesStorage {
         self.coreDataStorage = coreDataStorage
     }
     
-    func update(gif: GIF) {
-        if gif.isFavourite {
-            let gifMO = gif.toManagedObject(context: coreDataStorage.managedObjectContext)
-            coreDataStorage.create(object: gifMO) { _ in
-                print("saved")
+    func add(gif: GIF) {
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: gif.url)
+            DispatchQueue.main.async {
+                let gifMO = gif.toManagedObject(context: self.coreDataStorage.managedObjectContext)
+                gifMO.data = data
+                gifMO.dateCreated = Date()
+                self.coreDataStorage.create(object: gifMO) { _ in
+                    print("saved")
+                }
             }
-        } else {
-            let predicate = NSPredicate(format: "id == %@", gif.id)
-            let fetchedObject = coreDataStorage.fetch(with: predicate)
-            guard let fetchedObject = fetchedObject else {
-                return
-            }
-            coreDataStorage.delete(object: fetchedObject)
         }
+    }
+    
+    func remove(gif: GIF) {
+        let predicate = NSPredicate(format: "id == %@", gif.id)
+        let fetchedObject = coreDataStorage.fetch(with: predicate)
+        guard let fetchedObject = fetchedObject else {
+            return
+        }
+        coreDataStorage.delete(object: fetchedObject)
     }
     
     func isFavourite(gif: GIF) -> Bool {
@@ -48,6 +56,7 @@ extension GIF {
         let gifMO = GifMO(context: context)
         gifMO.id = id
         gifMO.url = url
+        gifMO.data = data
         return gifMO
     }
 }

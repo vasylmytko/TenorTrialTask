@@ -7,24 +7,56 @@
 
 import UIKit
 import CoreData
+import Combine
 
 final class FavouritesViewController: UIViewController {
     
     private let collectionView: UICollectionView = .make()
-    private var dataSource: UICollectionViewDiffableDataSource<Int, NSManagedObjectID>?
-    
     private let viewModel: FavouritesViewModel
+    
+    private var cancellable: Set<AnyCancellable> = []
     
     init(viewModel: FavouritesViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-
+        
+        navigationItem.title = "Favourites"
+        
+        collectionView.dataSource = self
         configureViewHierarchy()
         configureLayout()
+        
+        viewModel.dataReloaded
+            .sink { [weak self] in
+                self?.collectionView.reloadData()
+            }
+            .store(in: &cancellable)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension FavouritesViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.numberOfItems
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GIFCell.cellIdentifier, for: indexPath)
+        guard
+            let gifCell = cell as? GIFCell,
+            let gifCellViewModel = viewModel.itemAt(indexPath: indexPath)
+        else {
+            return cell
+        }
+        gifCell.configure(with: gifCellViewModel)
+        return gifCell
     }
 }
 

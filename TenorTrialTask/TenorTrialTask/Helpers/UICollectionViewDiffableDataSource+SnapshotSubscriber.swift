@@ -21,7 +21,7 @@ typealias SingleSectionCollectionViewDataSource<T: Hashable> =
 
 final class SingleSectionCollectionViewSnapshotSubscriber<T: Hashable>: Subscriber {
 
-    typealias Input = NSDiffableDataSourceSnapshot<SingleSection, T>
+    typealias Input = [T]
     typealias Failure = Never
 
     private let dataSource: SingleSectionCollectionViewDataSource<T>
@@ -38,7 +38,10 @@ final class SingleSectionCollectionViewSnapshotSubscriber<T: Hashable>: Subscrib
     }
 
     func receive(_ input: Input) -> Subscribers.Demand {
-        dataSource.apply(input, animatingDifferences: animated)
+        var snapshot = NSDiffableDataSourceSnapshot<SingleSection, T>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(input, toSection: .main)
+        dataSource.apply(snapshot, animatingDifferences: animated)
         return .unlimited
     }
 

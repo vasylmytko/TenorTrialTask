@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct GIF: HashableByID {
+struct GIF: Hashable {
     let id: String
     let url: URL
     let dimensions: [Int]
     var isFavourite: Bool
+    let data: Data? = nil
 }
 
 struct GIFCollectionPage {

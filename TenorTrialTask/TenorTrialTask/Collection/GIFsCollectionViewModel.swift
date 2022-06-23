@@ -17,7 +17,7 @@ struct GIFsCollection {
     }
     
     struct Outputs {
-        let snapshot: AnyPublisher<GIFsSnapshot, Never>
+        let items: AnyPublisher<[DefaultGIFCellViewModel], Never>
     }
 }
 
@@ -31,20 +31,22 @@ final class DefaultGIFsCollectionViewModel: GIFsCollectionViewModel {
     let inputs: GIFsCollection.Inputs
     let outputs: GIFsCollection.Outputs
     
-    private let itemsSubject: CurrentValueSubject<[GIF], Never> = .init([])
+    private let viewModelsSubject: CurrentValueSubject<[DefaultGIFCellViewModel], Never> = .init([])
     private var cancellable: Set<AnyCancellable> = []
     private var searchTerm: String?
     
     private let paginatedRepository: GIFPaginatedRepository
     private let favouritesStorage: FavouritesStorage
-    private let snapshotSubject: CurrentValueSubject<GIFsSnapshot, Never> = .init(.init())
+    private let updateFavouritesUseCase: UpdateFavouritesUseCase
     
     init(
         paginatedRepository: GIFPaginatedRepository = DefaultGIFPaginatedDataSource(),
-        favouritesStorage: FavouritesStorage = CoreDataFavouritesStorage()
+        favouritesStorage: FavouritesStorage = CoreDataFavouritesStorage(),
+        updateFavouritesUseCase: UpdateFavouritesUseCase = DefaultUpdateFavouritesUseCase()
     ) {
         self.paginatedRepository = paginatedRepository
         self.favouritesStorage = favouritesStorage
+        self.updateFavouritesUseCase = updateFavouritesUseCase
         self.inputs = .init(
             onAppear: .init(),
             search: .init(),
@@ -52,10 +54,12 @@ final class DefaultGIFsCollectionViewModel: GIFsCollectionViewModel {
             selectedIndexPath: .init()
         )
         self.outputs = .init(
-            snapshot: snapshotSubject.eraseToAnyPublisher()
+            items: viewModelsSubject.eraseToAnyPublisher()
         )
-        self.paginatedRepository.snapshotUpdate = { [weak self] snapshot in
-            self?.snapshotSubject.send(snapshot)
+        self.paginatedRepository.gifsUpdate = { [weak self] gifs in
+            self?.viewModelsSubject.send(gifs.map {
+                DefaultGIFCellViewModel(gif: $0)
+            })
         }
         configureInputs()
     }
@@ -79,7 +83,7 @@ final class DefaultGIFsCollectionViewModel: GIFsCollectionViewModel {
         inputs.indexWillBeDisplayed
             .combineLatest(inputs.search.prepend("hello"))
             .filter { (indexPath, _) in
-                return indexPath.item == self.snapshotSubject.value.numberOfItems - 1
+                return indexPath.item == self.viewModelsSubject.value.count - 1
             }
             .compactMap { $0.1 }
             .sink { [weak self] searchTerm in
@@ -99,13 +103,14 @@ final class DefaultGIFsCollectionViewModel: GIFsCollectionViewModel {
     }
     
     private func selectedGIF(at indexPath: IndexPath) {
-        guard snapshotSubject.value.itemIdentifiers.indices.contains(indexPath.item) else {
+        guard viewModelsSubject.value.indices.contains(indexPath.item) else {
             return
         }
-        var selectedGIF = snapshotSubject.value.itemIdentifiers[indexPath.item]
-        selectedGIF.isFavourite.toggle()
-        favouritesStorage.update(gif: selectedGIF)
-        snapshotSubject.value.reloadItems([selectedGIF])
+        let viewModel = viewModelsSubject.value[indexPath.item]
+        viewModelsSubject.value[indexPath.item].setIsFavourite(!viewModel.gif.isFavourite)
+        var gif = viewModel.gif
+        gif.isFavourite.toggle()
+        updateFavouritesUseCase.execute(gif: gif)
     }
 }
 

@@ -10,6 +10,8 @@
 		AC21CFF12863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC21CFF02863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift */; };
 		AC32B484285FC8E800AD9458 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC32B483285FC8E800AD9458 /* FavouritesViewController.swift */; };
 		AC32B486285FC8F200AD9458 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC32B485285FC8F100AD9458 /* FavouritesViewModel.swift */; };
+		AC6FA2552864B3840014BCB2 /* GIFCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6FA2542864B3840014BCB2 /* GIFCellViewModel.swift */; };
+		AC6FA257286505EC0014BCB2 /* UpdateFavouritesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6FA256286505EC0014BCB2 /* UpdateFavouritesUseCase.swift */; };
 		AC72FFCF28623194008F6B21 /* GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFCE28623194008F6B21 /* GIF.swift */; };
 		AC72FFD1286231E7008F6B21 /* TenorGIFsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFD0286231E7008F6B21 /* TenorGIFsResponse.swift */; };
 		AC72FFD32862347D008F6B21 /* FavouritesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFD22862347D008F6B21 /* FavouritesStorage.swift */; };
@@ -56,6 +58,8 @@
 		AC21CFF02863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewDiffableDataSource+SnapshotSubscriber.swift"; sourceTree = "<group>"; };
 		AC32B483285FC8E800AD9458 /* FavouritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		AC32B485285FC8F100AD9458 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
+		AC6FA2542864B3840014BCB2 /* GIFCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCellViewModel.swift; sourceTree = "<group>"; };
+		AC6FA256286505EC0014BCB2 /* UpdateFavouritesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFavouritesUseCase.swift; sourceTree = "<group>"; };
 		AC72FFCE28623194008F6B21 /* GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIF.swift; sourceTree = "<group>"; };
 		AC72FFD0286231E7008F6B21 /* TenorGIFsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorGIFsResponse.swift; sourceTree = "<group>"; };
 		AC72FFD22862347D008F6B21 /* FavouritesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesStorage.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 			children = (
 				AC72FFCE28623194008F6B21 /* GIF.swift */,
 				AC72FFDA28623BA7008F6B21 /* FetchGIFsUseCase.swift */,
+				AC6FA256286505EC0014BCB2 /* UpdateFavouritesUseCase.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 				AC8BA0CD285D01F5009CF8F1 /* GIFsCollectionViewModel.swift */,
 				AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */,
 				AC72FFDC28624D72008F6B21 /* GIFPaginatedRepository.swift */,
+				AC6FA2542864B3840014BCB2 /* GIFCellViewModel.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -375,6 +381,7 @@
 				AC8BA09C285CE973009CF8F1 /* ViewController.swift in Sources */,
 				AC8BA0CE285D01F5009CF8F1 /* GIFsCollectionViewModel.swift in Sources */,
 				AC72FFD628623527008F6B21 /* CoreDataManager.swift in Sources */,
+				AC6FA257286505EC0014BCB2 /* UpdateFavouritesUseCase.swift in Sources */,
 				AC8BA0D0285D04E9009CF8F1 /* GIFCell.swift in Sources */,
 				AC8BA0CB285D01B7009CF8F1 /* GIFsCollectionViewController.swift in Sources */,
 				AC21CFF12863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift in Sources */,
@@ -382,6 +389,7 @@
 				AC72FFD1286231E7008F6B21 /* TenorGIFsResponse.swift in Sources */,
 				AC72FFCF28623194008F6B21 /* GIF.swift in Sources */,
 				AC72FFD32862347D008F6B21 /* FavouritesStorage.swift in Sources */,
+				AC6FA2552864B3840014BCB2 /* GIFCellViewModel.swift in Sources */,
 				ACABA098285E56ED00FD7067 /* GIFsRepository.swift in Sources */,
 				AC8BA0A2285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld in Sources */,
 				AC8BA09A285CE973009CF8F1 /* SceneDelegate.swift in Sources */,

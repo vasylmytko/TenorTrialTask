@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import Combine
 
 final class GIFCell: UICollectionViewCell {
     
@@ -14,14 +15,9 @@ final class GIFCell: UICollectionViewCell {
     
     private let imageView: SDAnimatedImageView = .make()
     private let favouriteIcon: UIImageView = .makeFavourite()
+    private var cancellable: Set<AnyCancellable> = []
     
-    private var dataTask: URLSessionDataTask?
-    
-    var gif: GIF = .placeholder {
-        didSet {
-            updateViews()
-        }
-    }
+    private var viewModel: DefaultGIFCellViewModel?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,12 +33,17 @@ final class GIFCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        dataTask?.cancel()
+        imageView.sd_cancelCurrentImageLoad()
     }
     
-    private func updateViews() {
-        imageView.sd_setImage(with: gif.url, placeholderImage: nil, options: [.progressiveLoad])
-        favouriteIcon.isHidden = !gif.isFavourite
+    func configure(with viewModel: DefaultGIFCellViewModel) {
+        viewModel.outputs.isFavourite
+            .removeDuplicates()
+            .toggle()
+            .assign(to: \.isHidden, on: favouriteIcon)
+            .store(in: &cancellable)
+    
+        imageView.setGIF(viewModel.gif)
     }
 }
 
@@ -86,7 +87,7 @@ private extension GIFCell {
 
 // MARK: - Factories
 
-private extension SDAnimatedImageView {
+extension SDAnimatedImageView {
     static func make() -> SDAnimatedImageView {
         let imageView = SDAnimatedImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -114,14 +115,19 @@ extension GIF {
     )
 }
 
-public protocol HashableByID: Hashable, Identifiable { }
-
-extension HashableByID {
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        lhs.id == rhs.id
+public extension Publisher where Output == Bool {
+    func toggle() -> Publishers.Map<Self, Bool> {
+        map(!)
     }
 }
+
+extension SDAnimatedImageView {
+    func setGIF(_ gif: GIF) {
+        if let data = gif.data {
+            self.image = SDAnimatedImage(data: data)
+        } else {
+            sd_setImage(with: gif.url)
+        }
+    }
+}
+    

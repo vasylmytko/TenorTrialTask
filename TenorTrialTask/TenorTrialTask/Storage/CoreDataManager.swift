@@ -65,9 +65,10 @@ final class DefaultCoreDataManager: CoreDataManager {
         do {
             let fetchRequest: NSFetchRequest<GifMO> = GifMO.fetchRequest()
             fetchRequest.predicate = predicate
-            let objects = try fetchRequest.execute()
+            let objects = try managedObjectContext.fetch(fetchRequest)
             return objects.first
-        } catch {
+        } catch let error {
+            print("error fetching: \(error)")
             return nil
         }
     }

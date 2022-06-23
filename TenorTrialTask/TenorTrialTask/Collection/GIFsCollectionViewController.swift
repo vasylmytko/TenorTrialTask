@@ -19,7 +19,7 @@ final class GIFsCollectionViewController: UIViewController {
     // MARK: - Helper properties
         
     private var cancellable: Set<AnyCancellable> = []
-    private let dataSource: SingleSectionCollectionViewDataSource<GIF>
+    private let dataSource: SingleSectionCollectionViewDataSource<DefaultGIFCellViewModel>
     
     // MARK: - Dependencies
     
@@ -34,7 +34,7 @@ final class GIFsCollectionViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         navigationItem.searchController = searchController
-        navigationItem.title = "GIFs"
+        navigationItem.title = "Search"
         configureViewHierarchy()
         configureLayout()
         configureInputs()
@@ -71,7 +71,7 @@ final class GIFsCollectionViewController: UIViewController {
     }
     
     private func configureOutputs() {
-        viewModel.outputs.snapshot
+        viewModel.outputs.items
             .receive(on: DispatchQueue.main)
             .subscribe(dataSource.snapshotSubscriber(animated: true))
     }
@@ -114,11 +114,11 @@ extension UICollectionView {
     }
 }
 
-extension UICollectionViewDiffableDataSource where SectionIdentifierType == SingleSection, ItemIdentifierType == GIF {
-    static func make(collectionView: UICollectionView) -> SingleSectionCollectionViewDataSource<GIF> {
+extension UICollectionViewDiffableDataSource where SectionIdentifierType == SingleSection, ItemIdentifierType == DefaultGIFCellViewModel {
+    static func make(collectionView: UICollectionView) -> SingleSectionCollectionViewDataSource<DefaultGIFCellViewModel> {
         return .init(collectionView: collectionView) { collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GIFCell.cellIdentifier, for: indexPath) as? GIFCell
-            cell?.gif = item
+            cell?.configure(with: item)
             return cell
         }
     }

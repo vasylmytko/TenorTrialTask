@@ -16,7 +16,7 @@ enum SingleSection: Hashable {
 typealias GIFsSnapshot = NSDiffableDataSourceSnapshot<SingleSection, GIF>
 
 protocol GIFPaginatedRepository: AnyObject {
-    var snapshotUpdate: ((GIFsSnapshot) -> Void)? { get set }
+    var gifsUpdate: (([GIF]) -> Void)? { get set }
 
     func fetch(searchTerm: String)
 }
@@ -28,6 +28,8 @@ final class DefaultGIFPaginatedDataSource: GIFPaginatedRepository {
     private var nextPage: String?
     private var snapshot: GIFsSnapshot = .init()
     
+    private var gifs: [GIF] = []
+    var gifsUpdate: (([GIF]) -> Void)?
     var snapshotUpdate: ((GIFsSnapshot) -> Void)?
     
     init(fetchGIFsUseCase: FetchGIFsUseCase = DefaultFetchGIFsUseCase()) {
@@ -38,27 +40,23 @@ final class DefaultGIFPaginatedDataSource: GIFPaginatedRepository {
         if searchedParameters?.searchTerm == searchTerm {
             fetch(searchParameters: .init(searchTerm: searchTerm, next: nextPage))
         } else {
-            snapshot.deleteAllItems()
-            snapshotUpdate?(snapshot)
+            gifs.removeAll()
+            gifsUpdate?(gifs)
             fetch(searchParameters: .init(searchTerm: searchTerm, next: nil))
         }
     }
     
     private func fetch(searchParameters: GIFSearchParameters) {
-        print("searched")
         fetchGIFsUseCase.execute(searchParamaters: searchParameters) { [weak self] result in
             guard let self = self else {
                 return
             }
             switch result {
             case .success(let gifsCollection):
-                if self.snapshot.numberOfSections == 0 {
-                    self.snapshot.appendSections([.main])
-                }
+                self.gifs.append(contentsOf: gifsCollection.gifs)
                 self.searchedParameters = searchParameters
                 self.nextPage = gifsCollection.next
-                self.snapshot.appendItems(gifsCollection.gifs)
-                self.snapshotUpdate?(self.snapshot)
+                self.gifsUpdate?(self.gifs)
             case .failure(let error):
                 print("error occured")
             }
