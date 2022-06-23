@@ -14,8 +14,3 @@ struct GIF: Hashable {
     var isFavourite: Bool
     let data: Data? = nil
 }
-
-struct GIFCollectionPage {
-    let gifs: [GIF]
-    let next: String
-}

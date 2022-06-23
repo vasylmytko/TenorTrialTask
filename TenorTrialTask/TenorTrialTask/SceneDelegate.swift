@@ -16,44 +16,38 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let tabBarController = UITabBarController()
-        
-        let viewModel = DefaultGIFsCollectionViewModel()
-        let gifsCollectionController = GIFsCollectionViewController(viewModel: viewModel)
-        let gifsNavigationController = UINavigationController(rootViewController: gifsCollectionController)
-        gifsNavigationController.tabBarItem = .init(
-            title: "Search",
-            image: UIImage(systemName: "magnifyingglass"),
-            tag: 0
-        )
-
-        let sortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: false)
-        let fetchRequest: NSFetchRequest<GifMO> = GifMO.fetchRequest()
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        let fetchedResultController = GIFFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: DefaultCoreDataManager.shared.managedObjectContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil
-        )
-        let favouritesViewModel = DefaultFavouritesViewModel(fetchedResultsController: fetchedResultController)
-        let favouriteController = FavouritesViewController(viewModel: favouritesViewModel)
-        let favouriteNavigationController = UINavigationController(rootViewController: favouriteController)
-        favouriteNavigationController.tabBarItem = .init(
-            title: "Favourites",
-            image: UIImage(systemName: "star.fill"),
-            tag: 0
-        )
-        
-        tabBarController.setViewControllers([gifsNavigationController, favouriteNavigationController], animated: false)
-        tabBarController.tabBar.tintColor = .systemBlue
-        tabBarController.tabBar.unselectedItemTintColor = .gray
-        
-        window.rootViewController = tabBarController
+        window.rootViewController = makeRootViewController()
         self.window = window
         window.makeKeyAndVisible()
     }
+    
+    private func makeRootViewController() -> UIViewController {
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers(
+            [makeSearchGIFsViewContoller(), makeFavouritesViewController()],
+            animated: false
+        )
+        tabBarController.tabBar.tintColor = .systemBlue
+        tabBarController.tabBar.unselectedItemTintColor = .gray
+        return tabBarController
+    }
 
+    private func makeSearchGIFsViewContoller() -> UIViewController {
+        let viewModel = DefaultGIFsCollectionViewModel()
+        let controller = GIFsCollectionViewController(viewModel: viewModel)
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.tabBarItem = .search
+        return navigationController
+    }
+    
+    private func makeFavouritesViewController() -> UIViewController {
+        let viewModel = DefaultFavouritesViewModel(fetchedResultsController: .makeGIFs())
+        let controller = FavouritesViewController(viewModel: viewModel)
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.tabBarItem = .favourites
+        return navigationController
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
@@ -85,3 +79,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
+extension UITabBarItem {
+    static let favourites: UITabBarItem = .init(
+        title: "Favourites",
+        image: UIImage(systemName: "star.fill"),
+        tag: 0
+    )
+    
+    static let search: UITabBarItem = .init(
+        title: "Search",
+        image: UIImage(systemName: "magnifyingglass"),
+        tag: 0
+    )
+}
+
+extension NSFetchedResultsController where ResultType == GifMO {
+    static func makeGIFs() -> NSFetchedResultsController<GifMO> {
+        let sortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: false)
+        let fetchRequest: NSFetchRequest<GifMO> = GifMO.fetchRequest()
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return GIFFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: DefaultCoreDataManager.shared.managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+    }
+}

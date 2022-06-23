@@ -25,16 +25,19 @@ final class FavouritesViewController: UIViewController {
         collectionView.dataSource = self
         configureViewHierarchy()
         configureLayout()
-        
+        configureBindings()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureBindings() {
         viewModel.dataReloaded
             .sink { [weak self] in
                 self?.collectionView.reloadData()
             }
             .store(in: &cancellable)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 
