@@ -3,10 +3,11 @@
     <entity name="GifMO" representedClassName="GifMO" syncable="YES" codeGenerationType="class">
         <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dimensions" optional="YES" attributeType="Transformable" customClassName="[Int]"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="URI"/>
     </entity>
     <elements>
-        <element name="GifMO" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="GifMO" positionX="-63" positionY="-18" width="128" height="104"/>
     </elements>
 </model>

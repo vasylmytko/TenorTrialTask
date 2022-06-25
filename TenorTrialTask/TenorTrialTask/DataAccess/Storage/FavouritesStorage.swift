@@ -57,6 +57,7 @@ extension GIF {
         gifMO.id = id
         gifMO.url = url
         gifMO.data = data
+        gifMO.dimensions = dimensions
         return gifMO
     }
 }

@@ -62,7 +62,7 @@ extension GifMO {
         return .init(
             id: id,
             url: url,
-            dimensions: [],
+            dimensions: dimensions ?? [],
             isFavourite: true
         )
     }

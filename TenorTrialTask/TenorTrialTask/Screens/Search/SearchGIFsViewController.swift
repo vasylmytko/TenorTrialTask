@@ -33,23 +33,11 @@ final class SearchGIFsViewController: UIViewController {
         self.collectionView.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
         
-        let configuration = UICollectionLayoutWaterfallConfiguration(
-            columnCount: 2,
-            spacing: 5,
-            contentInsetsReference: .automatic,
-            itemSizeProvider: { [weak self] indexPath in
-                guard let dimensions = self?.dataSource.itemIdentifier(for: indexPath)?.gif.dimensions else {
-                    return (0, 0)
-                }
-                return (CGFloat(dimensions[0]), CGFloat(dimensions[1]))
-            }
-        )
-        let layout: UICollectionViewCompositionalLayout = .makeWaterfall(configuration: configuration)
-        collectionView.setCollectionViewLayout(layout, animated: true)
         navigationItem.searchController = searchController
         navigationItem.title = "Search"
         configureViewHierarchy()
         configureLayout()
+        configureSubviews()
         configureInputs()
         configureOutputs()
     }
@@ -94,6 +82,14 @@ final class SearchGIFsViewController: UIViewController {
     }
 }
 
+// MARK: - Subviews
+
+private extension SearchGIFsViewController {
+    func configureSubviews() {
+        collectionView.setCollectionViewLayout(.makeWaterfall(itemSizeProvider: dataSource), animated: false)
+    }
+}
+
 // MARK: - View hierarchy
 
 private extension SearchGIFsViewController {
@@ -120,9 +116,6 @@ private extension SearchGIFsViewController {
 extension UICollectionView {
     static func make() -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = .init(width: 180, height: 180)
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.keyboardDismissMode = .onDrag
@@ -139,5 +132,27 @@ extension UICollectionViewDiffableDataSource where SectionIdentifierType == Sing
             cell?.configure(with: item)
             return cell
         }
+    }
+}
+
+protocol WaterfallLayoutItemSizeProvider {
+    func sizeForItem(at indexPath: IndexPath) -> CGSize
+    func numberOfItems(in section: Int) -> Int
+}
+
+extension SingleSectionCollectionViewDataSource: WaterfallLayoutItemSizeProvider where ItemIdentifierType == DefaultGIFCellViewModel {
+    func sizeForItem(at indexPath: IndexPath) -> CGSize {
+        guard
+            let dimensions = itemIdentifier(for: indexPath)?.gif.dimensions,
+            let width = dimensions.first,
+            let height = dimensions.last
+        else {
+            return .zero
+        }
+        return CGSize(width: width, height: height)
+    }
+    
+    func numberOfItems(in section: Int) -> Int {
+        return snapshot().itemIdentifiers.count
     }
 }

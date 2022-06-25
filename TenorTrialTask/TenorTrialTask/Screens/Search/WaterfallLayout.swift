@@ -7,20 +7,17 @@
 
 import UIKit
 
-public typealias UICollectionViewWaterfallLayoutItemSizeProvider = (IndexPath) -> (w: CGFloat, h: CGFloat)
-
-public struct UICollectionLayoutWaterfallConfiguration {
-    
-    public let columnCount: Int
-    public let spacing: CGFloat
-    public let contentInsetsReference: UIContentInsetsReference
-    public let itemSizeProvider: UICollectionViewWaterfallLayoutItemSizeProvider
+public struct WaterfallLayoutConfiguration {
+    let columnCount: Int
+    let spacing: CGFloat
+    let contentInsetsReference: UIContentInsetsReference
+    let itemSizeProvider: WaterfallLayoutItemSizeProvider
         
-    public init(
+    init(
         columnCount: Int = 2,
         spacing: CGFloat = 8,
         contentInsetsReference: UIContentInsetsReference = .automatic,
-        itemSizeProvider: @escaping UICollectionViewWaterfallLayoutItemSizeProvider
+        itemSizeProvider: WaterfallLayoutItemSizeProvider
     ) {
         self.columnCount = columnCount
         self.spacing = spacing
@@ -31,13 +28,13 @@ public struct UICollectionLayoutWaterfallConfiguration {
 
 class LayoutItemProvider {
     private let columnCount: CGFloat
-    private let itemSizeProvider: UICollectionViewWaterfallLayoutItemSizeProvider
+    private let itemSizeProvider: WaterfallLayoutItemSizeProvider
     private let spacing: CGFloat
     private let contentSize: CGSize
     var columnHeights: [CGFloat]
 
     init(
-        configuration: UICollectionLayoutWaterfallConfiguration,
+        configuration: WaterfallLayoutConfiguration,
         environment: NSCollectionLayoutEnvironment
     ) {
         self.columnHeights = [CGFloat](repeating: 0, count: configuration.columnCount)
@@ -77,8 +74,8 @@ class LayoutItemProvider {
     }
     
     private func itemHeight(for indexPath: IndexPath, itemWidth: CGFloat) -> CGFloat {
-        let (w, h) = itemSizeProvider(indexPath)
-        let aspectRatio = h / w
+        let size = itemSizeProvider.sizeForItem(at: indexPath)
+        let aspectRatio = size.height / size.width
         let itemHeight = itemWidth * aspectRatio
         return itemHeight.rounded()
     }
@@ -91,13 +88,18 @@ class LayoutItemProvider {
     }
 }
 
-extension UICollectionViewCompositionalLayout {
-    static func makeWaterfall(configuration: UICollectionLayoutWaterfallConfiguration) -> UICollectionViewCompositionalLayout {
-        var numberOfItems: (Int) -> Int = { _ in 0 }
+extension UICollectionViewLayout {
+    static func makeWaterfall(itemSizeProvider: WaterfallLayoutItemSizeProvider) -> UICollectionViewCompositionalLayout {
+        let configuration = WaterfallLayoutConfiguration(
+            columnCount: 2,
+            spacing: 8,
+            contentInsetsReference: .automatic,
+            itemSizeProvider: itemSizeProvider
+        )
             
         let layout = UICollectionViewCompositionalLayout { section, environment in
             let itemProvider = LayoutItemProvider(configuration: configuration, environment: environment)
-            let items: [NSCollectionLayoutGroupCustomItem] = Array(0..<numberOfItems(section))
+            let items: [NSCollectionLayoutGroupCustomItem] = Array(0..<itemSizeProvider.numberOfItems(in: section))
                 .map { itemProvider.item(for: IndexPath(item: $0, section: section)) }
             let heightFraction = (itemProvider.columnHeights.max() ?? 0) / environment.container.contentSize.height
             
@@ -113,10 +115,6 @@ extension UICollectionViewCompositionalLayout {
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsetsReference = configuration.contentInsetsReference
             return section
-        }
-        
-        numberOfItems = { [weak layout] in
-            layout?.collectionView?.numberOfItems(inSection: $0) ?? 0
         }
         
         return layout
