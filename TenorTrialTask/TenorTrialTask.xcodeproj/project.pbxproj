@@ -12,14 +12,14 @@
 		AC32B486285FC8F200AD9458 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC32B485285FC8F100AD9458 /* FavouritesViewModel.swift */; };
 		AC6FA2552864B3840014BCB2 /* GIFCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6FA2542864B3840014BCB2 /* GIFCellViewModel.swift */; };
 		AC6FA257286505EC0014BCB2 /* UpdateFavouritesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6FA256286505EC0014BCB2 /* UpdateFavouritesUseCase.swift */; };
-		AC6FA25F286516C90014BCB2 /* GIFCollectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6FA25E286516C90014BCB2 /* GIFCollectionPage.swift */; };
+		AC6FA25F286516C90014BCB2 /* GIFsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6FA25E286516C90014BCB2 /* GIFsPage.swift */; };
+		AC6FA26428652C640014BCB2 /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = AC6FA26328652C640014BCB2 /* CombineExt */; };
 		AC72FFCF28623194008F6B21 /* GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFCE28623194008F6B21 /* GIF.swift */; };
 		AC72FFD1286231E7008F6B21 /* TenorGIFsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFD0286231E7008F6B21 /* TenorGIFsResponse.swift */; };
 		AC72FFD32862347D008F6B21 /* FavouritesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFD22862347D008F6B21 /* FavouritesStorage.swift */; };
 		AC72FFD628623527008F6B21 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFD528623527008F6B21 /* CoreDataManager.swift */; };
 		AC72FFD928623AB2008F6B21 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AC72FFD828623AB2008F6B21 /* CombineCocoa */; };
 		AC72FFDB28623BA7008F6B21 /* FetchGIFsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFDA28623BA7008F6B21 /* FetchGIFsUseCase.swift */; };
-		AC72FFDD28624D72008F6B21 /* GIFPaginatedRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFDC28624D72008F6B21 /* GIFPaginatedRepository.swift */; };
 		AC8BA098285CE973009CF8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA097285CE973009CF8F1 /* AppDelegate.swift */; };
 		AC8BA09A285CE973009CF8F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */; };
 		AC8BA0A2285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0A0285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld */; };
@@ -28,12 +28,13 @@
 		AC8BA0B2285CE97D009CF8F1 /* TenorTrialTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0B1285CE97D009CF8F1 /* TenorTrialTaskTests.swift */; };
 		AC8BA0BC285CE97D009CF8F1 /* TenorTrialTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0BB285CE97D009CF8F1 /* TenorTrialTaskUITests.swift */; };
 		AC8BA0BE285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0BD285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift */; };
-		AC8BA0CB285D01B7009CF8F1 /* GIFsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CA285D01B7009CF8F1 /* GIFsCollectionViewController.swift */; };
-		AC8BA0CE285D01F5009CF8F1 /* GIFsCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CD285D01F5009CF8F1 /* GIFsCollectionViewModel.swift */; };
+		AC8BA0CB285D01B7009CF8F1 /* SearchGIFsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CA285D01B7009CF8F1 /* SearchGIFsViewController.swift */; };
+		AC8BA0CE285D01F5009CF8F1 /* SearchGIFsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CD285D01F5009CF8F1 /* SearchGIFsViewModel.swift */; };
 		AC8BA0D0285D04E9009CF8F1 /* GIFCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */; };
 		ACABA096285E0ACB00FD7067 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = ACABA095285E0ACB00FD7067 /* SDWebImage */; };
 		ACABA098285E56ED00FD7067 /* GIFsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACABA097285E56ED00FD7067 /* GIFsRepository.swift */; };
 		ACABA09D285E6A0300FD7067 /* Tenor-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACABA09C285E6A0300FD7067 /* Tenor-Info.plist */; };
+		ACB56AF1286679F7008CD341 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB56AF0286679F7008CD341 /* WaterfallLayout.swift */; };
 		ACED9836285D0FDC004395B0 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED9835285D0FDC004395B0 /* DataService.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,13 +61,12 @@
 		AC32B485285FC8F100AD9458 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
 		AC6FA2542864B3840014BCB2 /* GIFCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCellViewModel.swift; sourceTree = "<group>"; };
 		AC6FA256286505EC0014BCB2 /* UpdateFavouritesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFavouritesUseCase.swift; sourceTree = "<group>"; };
-		AC6FA25E286516C90014BCB2 /* GIFCollectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCollectionPage.swift; sourceTree = "<group>"; };
+		AC6FA25E286516C90014BCB2 /* GIFsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFsPage.swift; sourceTree = "<group>"; };
 		AC72FFCE28623194008F6B21 /* GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIF.swift; sourceTree = "<group>"; };
 		AC72FFD0286231E7008F6B21 /* TenorGIFsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorGIFsResponse.swift; sourceTree = "<group>"; };
 		AC72FFD22862347D008F6B21 /* FavouritesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesStorage.swift; sourceTree = "<group>"; };
 		AC72FFD528623527008F6B21 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AC72FFDA28623BA7008F6B21 /* FetchGIFsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGIFsUseCase.swift; sourceTree = "<group>"; };
-		AC72FFDC28624D72008F6B21 /* GIFPaginatedRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFPaginatedRepository.swift; sourceTree = "<group>"; };
 		AC8BA094285CE973009CF8F1 /* TenorTrialTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenorTrialTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC8BA097285CE973009CF8F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,11 +79,12 @@
 		AC8BA0B7285CE97D009CF8F1 /* TenorTrialTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TenorTrialTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC8BA0BB285CE97D009CF8F1 /* TenorTrialTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorTrialTaskUITests.swift; sourceTree = "<group>"; };
 		AC8BA0BD285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorTrialTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		AC8BA0CA285D01B7009CF8F1 /* GIFsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFsCollectionViewController.swift; sourceTree = "<group>"; };
-		AC8BA0CD285D01F5009CF8F1 /* GIFsCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFsCollectionViewModel.swift; sourceTree = "<group>"; };
+		AC8BA0CA285D01B7009CF8F1 /* SearchGIFsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGIFsViewController.swift; sourceTree = "<group>"; };
+		AC8BA0CD285D01F5009CF8F1 /* SearchGIFsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGIFsViewModel.swift; sourceTree = "<group>"; };
 		AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCell.swift; sourceTree = "<group>"; };
 		ACABA097285E56ED00FD7067 /* GIFsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFsRepository.swift; sourceTree = "<group>"; };
 		ACABA09C285E6A0300FD7067 /* Tenor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tenor-Info.plist"; sourceTree = "<group>"; };
+		ACB56AF0286679F7008CD341 /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
 		ACED9835285D0FDC004395B0 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC72FFD928623AB2008F6B21 /* CombineCocoa in Frameworks */,
+				AC6FA26428652C640014BCB2 /* CombineExt in Frameworks */,
 				ACABA096285E0ACB00FD7067 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				AC72FFCE28623194008F6B21 /* GIF.swift */,
-				AC6FA25E286516C90014BCB2 /* GIFCollectionPage.swift */,
+				AC6FA25E286516C90014BCB2 /* GIFsPage.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -261,9 +263,9 @@
 			isa = PBXGroup;
 			children = (
 				AC6FA25B2865167D0014BCB2 /* Views */,
-				AC8BA0CA285D01B7009CF8F1 /* GIFsCollectionViewController.swift */,
-				AC8BA0CD285D01F5009CF8F1 /* GIFsCollectionViewModel.swift */,
-				AC72FFDC28624D72008F6B21 /* GIFPaginatedRepository.swift */,
+				AC8BA0CA285D01B7009CF8F1 /* SearchGIFsViewController.swift */,
+				AC8BA0CD285D01F5009CF8F1 /* SearchGIFsViewModel.swift */,
+				ACB56AF0286679F7008CD341 /* WaterfallLayout.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -297,6 +299,7 @@
 			packageProductDependencies = (
 				ACABA095285E0ACB00FD7067 /* SDWebImage */,
 				AC72FFD828623AB2008F6B21 /* CombineCocoa */,
+				AC6FA26328652C640014BCB2 /* CombineExt */,
 			);
 			productName = TenorTrialTask;
 			productReference = AC8BA094285CE973009CF8F1 /* TenorTrialTask.app */;
@@ -373,6 +376,7 @@
 			packageReferences = (
 				ACABA094285E0ACB00FD7067 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				AC72FFD728623AB2008F6B21 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
+				AC6FA26228652C640014BCB2 /* XCRemoteSwiftPackageReference "CombineExt" */,
 			);
 			productRefGroup = AC8BA095285CE973009CF8F1 /* Products */;
 			projectDirPath = "";
@@ -418,23 +422,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC32B486285FC8F200AD9458 /* FavouritesViewModel.swift in Sources */,
-				AC8BA0CE285D01F5009CF8F1 /* GIFsCollectionViewModel.swift in Sources */,
+				AC8BA0CE285D01F5009CF8F1 /* SearchGIFsViewModel.swift in Sources */,
 				AC72FFD628623527008F6B21 /* CoreDataManager.swift in Sources */,
 				AC6FA257286505EC0014BCB2 /* UpdateFavouritesUseCase.swift in Sources */,
 				AC8BA0D0285D04E9009CF8F1 /* GIFCell.swift in Sources */,
-				AC8BA0CB285D01B7009CF8F1 /* GIFsCollectionViewController.swift in Sources */,
+				AC8BA0CB285D01B7009CF8F1 /* SearchGIFsViewController.swift in Sources */,
 				AC21CFF12863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift in Sources */,
 				AC8BA098285CE973009CF8F1 /* AppDelegate.swift in Sources */,
+				ACB56AF1286679F7008CD341 /* WaterfallLayout.swift in Sources */,
 				AC72FFD1286231E7008F6B21 /* TenorGIFsResponse.swift in Sources */,
 				AC72FFCF28623194008F6B21 /* GIF.swift in Sources */,
 				AC72FFD32862347D008F6B21 /* FavouritesStorage.swift in Sources */,
 				AC6FA2552864B3840014BCB2 /* GIFCellViewModel.swift in Sources */,
 				ACABA098285E56ED00FD7067 /* GIFsRepository.swift in Sources */,
 				AC8BA0A2285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld in Sources */,
-				AC6FA25F286516C90014BCB2 /* GIFCollectionPage.swift in Sources */,
+				AC6FA25F286516C90014BCB2 /* GIFsPage.swift in Sources */,
 				AC8BA09A285CE973009CF8F1 /* SceneDelegate.swift in Sources */,
 				AC72FFDB28623BA7008F6B21 /* FetchGIFsUseCase.swift in Sources */,
-				AC72FFDD28624D72008F6B21 /* GIFPaginatedRepository.swift in Sources */,
 				AC32B484285FC8E800AD9458 /* FavouritesViewController.swift in Sources */,
 				ACED9836285D0FDC004395B0 /* DataService.swift in Sources */,
 			);
@@ -770,6 +774,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AC6FA26228652C640014BCB2 /* XCRemoteSwiftPackageReference "CombineExt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineExt.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		AC72FFD728623AB2008F6B21 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
@@ -789,6 +801,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AC6FA26328652C640014BCB2 /* CombineExt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC6FA26228652C640014BCB2 /* XCRemoteSwiftPackageReference "CombineExt" */;
+			productName = CombineExt;
+		};
 		AC72FFD828623AB2008F6B21 /* CombineCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AC72FFD728623AB2008F6B21 /* XCRemoteSwiftPackageReference "CombineCocoa" */;

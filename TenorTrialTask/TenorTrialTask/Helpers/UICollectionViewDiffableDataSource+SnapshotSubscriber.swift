@@ -8,6 +8,10 @@
 import UIKit
 import Combine
 
+enum SingleSection {
+    case main
+}
+
 extension UICollectionViewDiffableDataSource where SectionIdentifierType == SingleSection {
     func snapshotSubscriber(
         animated: Bool = true

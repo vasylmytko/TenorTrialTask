@@ -33,8 +33,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     private func makeSearchGIFsViewContoller() -> UIViewController {
-        let viewModel = DefaultGIFsCollectionViewModel()
-        let controller = GIFsCollectionViewController(viewModel: viewModel)
+        let viewModel = DefaultSearchGIFsViewModel()
+        let controller = SearchGIFsViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: controller)
         navigationController.tabBarItem = .search
         return navigationController

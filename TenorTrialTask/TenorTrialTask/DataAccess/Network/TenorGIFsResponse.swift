@@ -13,7 +13,7 @@ struct TenorGIFsResponse: Decodable {
 }
 
 extension TenorGIFsResponse {
-    func toDomain() -> GIFCollectionPage {
+    func toDomain() -> GIFsCollection {
         return .init(gifs: results.map { $0.toDomain() }, next: next)
     }
 }

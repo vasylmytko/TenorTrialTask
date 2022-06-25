@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GIFCollectionPage {
+struct GIFsCollection {
     let gifs: [GIF]
     let next: String
 }
