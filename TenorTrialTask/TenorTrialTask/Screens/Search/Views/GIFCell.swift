@@ -9,10 +9,25 @@ import UIKit
 import SDWebImage
 import Combine
 
+class GradientView: UIView {
+    override class var layerClass: Swift.AnyClass {
+        return CAGradientLayer.self
+    }
+
+    var gradientLayer: CAGradientLayer? {
+        return layer as? CAGradientLayer
+    }
+
+    func applyGradientColors(_ colors: [UIColor?]) {
+        gradientLayer?.colors = colors.compactMap { $0?.cgColor }
+    }
+}
+
 final class GIFCell: UICollectionViewCell {
     
     static let cellIdentifier = "gifCell"
     
+    private let gradientView: GradientView = .make()
     private let imageView: SDAnimatedImageView = .make()
     private let favouriteIcon: UIImageView = .makeFavourite()
     private var cancellable: Set<AnyCancellable> = []
@@ -60,6 +75,7 @@ private extension GIFCell {
 
 private extension GIFCell {
     func configureViewHierarchy() {
+        contentView.addSubview(gradientView)
         contentView.addSubview(imageView)
         contentView.addSubview(favouriteIcon)
     }
@@ -69,6 +85,13 @@ private extension GIFCell {
 
 private extension GIFCell {
     func configureLayout() {
+        NSLayoutConstraint.activate([
+            gradientView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            gradientView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            gradientView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            gradientView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+        
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -92,6 +115,15 @@ extension SDAnimatedImageView {
         let imageView = SDAnimatedImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }
+}
+
+extension GradientView {
+    static func make() -> GradientView {
+        let view = GradientView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.applyGradientColors([UIColor.systemGray3, UIColor.systemGray6])
+        return view
     }
 }
 
@@ -130,4 +162,3 @@ extension SDAnimatedImageView {
         }
     }
 }
-    
