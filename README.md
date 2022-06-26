@@ -7,10 +7,10 @@ Project is split into three modules (folders): Domain, Data Access, Presentation
 Module contains entities, use cases that are isolated from other modules.
 
 #### Data Access
-Responsible for fetching data from ednpoints and local storages.
+Responsible for fetching data from endpoints and local storages.
 
 #### Presentation
-Contains all the code related to UI. The MVVM architecture was chosen to bind views with the view models.
+Contains all the code related to UI. The MVVM architecture is used for binding views with the view models.
 
 #### Composition Root
 All the logic related to linking modules is located in SceneDelegate because of the small number of screens in the project.
