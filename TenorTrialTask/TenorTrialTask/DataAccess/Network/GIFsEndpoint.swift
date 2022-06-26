@@ -1,5 +1,5 @@
 //
-//  GIFsRepository.swift
+//  GIFsEndpoint.swift
 //  TenorTrialTask
 //
 //  Created by Vasyl Mytko on 18.06.2022.
@@ -7,19 +7,19 @@
 
 import Foundation
 
-protocol GIFsRepository {
+protocol GIFsEndpoint {
     func fetch(
         searchParameters: GIFSearchParameters,
         completion: @escaping (Result<GIFsCollection, Error>) -> Void
     )
 }
 
-final class DefaultGIFsRepository: GIFsRepository {
+final class DefaultGIFsEndpoint: GIFsEndpoint {
  
-    private let dataService: DataService
+    private let networkService: NetworkService
     
-    init(dataService: DataService = DefaultDataService()) {
-        self.dataService = dataService
+    init(networkService: NetworkService = DefaultNetworkService()) {
+        self.networkService = networkService
     }
     
     func fetch(
@@ -29,7 +29,7 @@ final class DefaultGIFsRepository: GIFsRepository {
         guard let url = buildURL(searchParameters: searchParameters) else {
             return
         }
-        dataService.fetch(type: TenorGIFsResponse.self, url: url) { result in
+        networkService.fetch(type: TenorGIFsResponse.self, url: url) { result in
             switch result {
             case .success(let gifsResponse):
                 completion(.success(gifsResponse.toDomain()))

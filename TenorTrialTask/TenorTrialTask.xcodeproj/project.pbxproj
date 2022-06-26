@@ -24,6 +24,10 @@
 		AC72FFD628623527008F6B21 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFD528623527008F6B21 /* CoreDataManager.swift */; };
 		AC72FFD928623AB2008F6B21 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AC72FFD828623AB2008F6B21 /* CombineCocoa */; };
 		AC72FFDB28623BA7008F6B21 /* FetchGIFsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFDA28623BA7008F6B21 /* FetchGIFsUseCase.swift */; };
+		AC8B68F92868AF81004E8B2C /* TenorGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B68F82868AF81004E8B2C /* TenorGIF.swift */; };
+		AC8B68FB2868B035004E8B2C /* GIFSearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B68FA2868B035004E8B2C /* GIFSearchParameters.swift */; };
+		AC8B68FD2868B0E9004E8B2C /* UITabBarItem+Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B68FC2868B0E9004E8B2C /* UITabBarItem+Factories.swift */; };
+		AC8B68FF2868B128004E8B2C /* NSFetchedResultsController+Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B68FE2868B128004E8B2C /* NSFetchedResultsController+Factories.swift */; };
 		AC8BA098285CE973009CF8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA097285CE973009CF8F1 /* AppDelegate.swift */; };
 		AC8BA09A285CE973009CF8F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */; };
 		AC8BA0A2285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0A0285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld */; };
@@ -37,10 +41,9 @@
 		AC8BA0D0285D04E9009CF8F1 /* GIFCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */; };
 		AC9C90FE2867E1E400943DF2 /* Publisher+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9C90FD2867E1E400943DF2 /* Publisher+Extensions.swift */; };
 		ACABA096285E0ACB00FD7067 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = ACABA095285E0ACB00FD7067 /* SDWebImage */; };
-		ACABA098285E56ED00FD7067 /* GIFsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACABA097285E56ED00FD7067 /* GIFsRepository.swift */; };
-		ACABA09D285E6A0300FD7067 /* Tenor-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACABA09C285E6A0300FD7067 /* Tenor-Info.plist */; };
+		ACABA098285E56ED00FD7067 /* GIFsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACABA097285E56ED00FD7067 /* GIFsEndpoint.swift */; };
 		ACB56AF1286679F7008CD341 /* UICollectionViewLayout+Waterfall.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB56AF0286679F7008CD341 /* UICollectionViewLayout+Waterfall.swift */; };
-		ACED9836285D0FDC004395B0 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED9835285D0FDC004395B0 /* DataService.swift */; };
+		ACED9836285D0FDC004395B0 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED9835285D0FDC004395B0 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,10 @@
 		AC72FFD22862347D008F6B21 /* FavouritesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesStorage.swift; sourceTree = "<group>"; };
 		AC72FFD528623527008F6B21 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AC72FFDA28623BA7008F6B21 /* FetchGIFsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGIFsUseCase.swift; sourceTree = "<group>"; };
+		AC8B68F82868AF81004E8B2C /* TenorGIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorGIF.swift; sourceTree = "<group>"; };
+		AC8B68FA2868B035004E8B2C /* GIFSearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearchParameters.swift; sourceTree = "<group>"; };
+		AC8B68FC2868B0E9004E8B2C /* UITabBarItem+Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+Factories.swift"; sourceTree = "<group>"; };
+		AC8B68FE2868B128004E8B2C /* NSFetchedResultsController+Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFetchedResultsController+Factories.swift"; sourceTree = "<group>"; };
 		AC8BA094285CE973009CF8F1 /* TenorTrialTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenorTrialTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC8BA097285CE973009CF8F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,10 +99,9 @@
 		AC8BA0CD285D01F5009CF8F1 /* SearchGIFsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGIFsViewModel.swift; sourceTree = "<group>"; };
 		AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCell.swift; sourceTree = "<group>"; };
 		AC9C90FD2867E1E400943DF2 /* Publisher+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extensions.swift"; sourceTree = "<group>"; };
-		ACABA097285E56ED00FD7067 /* GIFsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFsRepository.swift; sourceTree = "<group>"; };
-		ACABA09C285E6A0300FD7067 /* Tenor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tenor-Info.plist"; sourceTree = "<group>"; };
+		ACABA097285E56ED00FD7067 /* GIFsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFsEndpoint.swift; sourceTree = "<group>"; };
 		ACB56AF0286679F7008CD341 /* UICollectionViewLayout+Waterfall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayout+Waterfall.swift"; sourceTree = "<group>"; };
-		ACED9835285D0FDC004395B0 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		ACED9835285D0FDC004395B0 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,8 @@
 			children = (
 				AC586E542867D9F40087704D /* UIView+Extensions.swift */,
 				AC9C90FD2867E1E400943DF2 /* Publisher+Extensions.swift */,
+				AC8B68FC2868B0E9004E8B2C /* UITabBarItem+Factories.swift */,
+				AC8B68FE2868B128004E8B2C /* NSFetchedResultsController+Factories.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -196,6 +204,7 @@
 			children = (
 				AC72FFCE28623194008F6B21 /* GIF.swift */,
 				AC6FA25E286516C90014BCB2 /* GIFsPage.swift */,
+				AC8B68FA2868B035004E8B2C /* GIFSearchParameters.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -213,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				AC8BA0A8285CE97C009CF8F1 /* Info.plist */,
-				ACABA09C285E6A0300FD7067 /* Tenor-Info.plist */,
 				AC8BA0A3285CE97C009CF8F1 /* Assets.xcassets */,
 				AC8BA0A5285CE97C009CF8F1 /* LaunchScreen.storyboard */,
 				AC8BA0A0285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld */,
@@ -237,6 +245,15 @@
 				AC72FFD528623527008F6B21 /* CoreDataManager.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		AC8B68F72868AF6A004E8B2C /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				AC72FFD0286231E7008F6B21 /* TenorGIFsResponse.swift */,
+				AC8B68F82868AF81004E8B2C /* TenorGIF.swift */,
+			);
+			path = Responses;
 			sourceTree = "<group>";
 		};
 		AC8BA08B285CE973009CF8F1 = {
@@ -304,9 +321,9 @@
 		ACED9834285D0FC5004395B0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				ACABA097285E56ED00FD7067 /* GIFsRepository.swift */,
-				ACED9835285D0FDC004395B0 /* DataService.swift */,
-				AC72FFD0286231E7008F6B21 /* TenorGIFsResponse.swift */,
+				AC8B68F72868AF6A004E8B2C /* Responses */,
+				ACABA097285E56ED00FD7067 /* GIFsEndpoint.swift */,
+				ACED9835285D0FDC004395B0 /* NetworkService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -427,7 +444,6 @@
 			files = (
 				AC8BA0A7285CE97C009CF8F1 /* LaunchScreen.storyboard in Resources */,
 				AC8BA0A4285CE97C009CF8F1 /* Assets.xcassets in Resources */,
-				ACABA09D285E6A0300FD7067 /* Tenor-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +475,7 @@
 				AC8BA0D0285D04E9009CF8F1 /* GIFCell.swift in Sources */,
 				AC8BA0CB285D01B7009CF8F1 /* SearchGIFsViewController.swift in Sources */,
 				AC8BA098285CE973009CF8F1 /* AppDelegate.swift in Sources */,
+				AC8B68FB2868B035004E8B2C /* GIFSearchParameters.swift in Sources */,
 				ACB56AF1286679F7008CD341 /* UICollectionViewLayout+Waterfall.swift in Sources */,
 				AC72FFD1286231E7008F6B21 /* TenorGIFsResponse.swift in Sources */,
 				AC72FFCF28623194008F6B21 /* GIF.swift in Sources */,
@@ -467,7 +484,7 @@
 				AC6FA2552864B3840014BCB2 /* GIFCellViewModel.swift in Sources */,
 				AC586E532867D8950087704D /* GradientView.swift in Sources */,
 				AC586E4F2867D4700087704D /* WaterfallLayoutConfiguration.swift in Sources */,
-				ACABA098285E56ED00FD7067 /* GIFsRepository.swift in Sources */,
+				ACABA098285E56ED00FD7067 /* GIFsEndpoint.swift in Sources */,
 				AC8BA0A2285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld in Sources */,
 				AC9C90FE2867E1E400943DF2 /* Publisher+Extensions.swift in Sources */,
 				AC586E49286756730087704D /* StateInfoView.swift in Sources */,
@@ -475,8 +492,11 @@
 				AC8BA09A285CE973009CF8F1 /* SceneDelegate.swift in Sources */,
 				AC586E552867D9F40087704D /* UIView+Extensions.swift in Sources */,
 				AC72FFDB28623BA7008F6B21 /* FetchGIFsUseCase.swift in Sources */,
+				AC8B68F92868AF81004E8B2C /* TenorGIF.swift in Sources */,
 				AC32B484285FC8E800AD9458 /* FavouritesViewController.swift in Sources */,
-				ACED9836285D0FDC004395B0 /* DataService.swift in Sources */,
+				AC8B68FF2868B128004E8B2C /* NSFetchedResultsController+Factories.swift in Sources */,
+				ACED9836285D0FDC004395B0 /* NetworkService.swift in Sources */,
+				AC8B68FD2868B0E9004E8B2C /* UITabBarItem+Factories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

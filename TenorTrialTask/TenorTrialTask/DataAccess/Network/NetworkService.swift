@@ -1,5 +1,5 @@
 //
-//  DataService.swift
+//  NetworkService.swift
 //  TenorTrialTask
 //
 //  Created by Vasyl Mytko on 17.06.2022.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol DataService {
+protocol NetworkService {
     func fetch<T: Decodable>(type: T.Type, url: URL, completion: @escaping (Result<T, NetworkError>) -> Void)
 }
 
-final class DefaultDataService: DataService {
+final class DefaultNetworkService: NetworkService {
     
     private let session: URLSession
     private let decoder: JSONDecoder

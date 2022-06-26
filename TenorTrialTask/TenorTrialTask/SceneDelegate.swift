@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -76,33 +75,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-    }
-}
-
-extension UITabBarItem {
-    static let favourites: UITabBarItem = .init(
-        title: "Favourites",
-        image: UIImage(systemName: "star.fill"),
-        tag: 0
-    )
-    
-    static let search: UITabBarItem = .init(
-        title: "Search",
-        image: UIImage(systemName: "magnifyingglass"),
-        tag: 0
-    )
-}
-
-extension NSFetchedResultsController where ResultType == GifMO {
-    static func makeGIFs() -> NSFetchedResultsController<GifMO> {
-        let sortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: false)
-        let fetchRequest: NSFetchRequest<GifMO> = GifMO.fetchRequest()
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        return GIFFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: DefaultCoreDataManager.shared.managedObjectContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil
-        )
     }
 }

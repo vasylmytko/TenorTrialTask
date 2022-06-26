@@ -14,9 +14,42 @@ protocol FetchGIFsUseCase: AnyObject {
     )
 }
 
-struct GIFSearchParameters {
-    let searchTerm: String
-    let page: String?
+final class DefaultFetchGIFsUseCase: FetchGIFsUseCase {
+    
+    private let gifsEndpoint: GIFsEndpoint
+    private let favouritesStorage: FavouritesStorage
+    
+    init(
+        gifsEndpoint: GIFsEndpoint = DefaultGIFsEndpoint(),
+        favouritesStorage: FavouritesStorage = CoreDataFavouritesStorage()
+    ) {
+        self.gifsEndpoint = gifsEndpoint
+        self.favouritesStorage = favouritesStorage
+    }
+    
+    func execute(
+        searchParamaters: GIFSearchParameters,
+        completion: @escaping (Result<GIFsCollection, Error>) -> Void
+    ) {
+        gifsEndpoint.fetch(searchParameters: searchParamaters) { [weak self] result in
+            switch result {
+            case .success(let collection):
+                self?.checkFavourites(in: collection, completion: completion)
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    private func checkFavourites(
+        in collection: GIFsCollection,
+        completion: @escaping (Result<GIFsCollection, Error>) -> Void
+    ) {
+        let checkedIfFavourite = collection.gifs.map { gif in
+            return mutated(gif) { $0.isFavourite = favouritesStorage.isFavourite(gif: gif) }
+        }
+        completion(.success(GIFsCollection(gifs: checkedIfFavourite, next: collection.next)))
+    }
 }
 
 final class PaginatedFetchGIFsUseCase: FetchGIFsUseCase {
@@ -61,48 +94,5 @@ final class PaginatedFetchGIFsUseCase: FetchGIFsUseCase {
                 completion(.failure(error))
             }
         }
-    }
-}
-
-final class DefaultFetchGIFsUseCase: FetchGIFsUseCase {
-    
-    private let gifsRepository: GIFsRepository
-    private let favouritesStorage: FavouritesStorage
-    
-    init(
-        gifsRepository: GIFsRepository = DefaultGIFsRepository(),
-        favouritesStorage: FavouritesStorage = CoreDataFavouritesStorage()
-    ) {
-        self.gifsRepository = gifsRepository
-        self.favouritesStorage = favouritesStorage
-    }
-    
-    func execute(
-        searchParamaters: GIFSearchParameters,
-        completion: @escaping (Result<GIFsCollection, Error>) -> Void
-    ) {
-        gifsRepository.fetch(searchParameters: searchParamaters) { [weak self] result in
-            switch result {
-            case .success(let collection):
-                self?.checkFavourites(in: collection, completion: completion)
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    private func checkFavourites(
-        in collection: GIFsCollection,
-        completion: @escaping (Result<GIFsCollection, Error>) -> Void
-    ) {
-        let checkedIfFavourite = collection.gifs.map { gif in
-            return GIF(
-                id: gif.id,
-                url: gif.url,
-                dimensions: gif.dimensions,
-                isFavourite: favouritesStorage.isFavourite(gif: gif)
-            )
-        }
-        completion(.success(GIFsCollection(gifs: checkedIfFavourite, next: collection.next)))
     }
 }
