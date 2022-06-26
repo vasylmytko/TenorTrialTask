@@ -7,13 +7,6 @@
 
 import Foundation
 
-@discardableResult
-public func mutated<T>(_ value: T, configure: (inout T) -> Void) -> T {
-    var copy = value
-    configure(&copy)
-    return copy
-}
-
 protocol UpdateFavouritesUseCase {
     func execute(gif: GIF)
 }

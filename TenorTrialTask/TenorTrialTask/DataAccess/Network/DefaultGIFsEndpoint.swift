@@ -1,18 +1,11 @@
 //
-//  GIFsEndpoint.swift
+//  DefaultGIFsEndpoint.swift
 //  TenorTrialTask
 //
 //  Created by Vasyl Mytko on 18.06.2022.
 //
 
 import Foundation
-
-protocol GIFsEndpoint {
-    func fetch(
-        searchParameters: GIFSearchParameters,
-        completion: @escaping (Result<GIFsCollection, NetworkError>) -> Void
-    )
-}
 
 final class DefaultGIFsEndpoint: GIFsEndpoint {
  
@@ -24,7 +17,7 @@ final class DefaultGIFsEndpoint: GIFsEndpoint {
     
     func fetch(
         searchParameters: GIFSearchParameters,
-        completion: @escaping (Result<GIFsCollection, NetworkError>) -> Void
+        completion: @escaping (Result<GIFsCollection, ErrorMessage>) -> Void
     ) {
         guard let url = buildURL(searchParameters: searchParameters) else {
             return
@@ -34,7 +27,7 @@ final class DefaultGIFsEndpoint: GIFsEndpoint {
             case .success(let gifsResponse):
                 completion(.success(gifsResponse.toDomain()))
             case .failure(let error):
-                completion(.failure(error))
+                completion(.failure(.init(error)))
             }
         }
     }

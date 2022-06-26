@@ -1,18 +1,11 @@
 //
-//  FavouritesStorage.swift
+//  CoreDataFavouritesStorage.swift
 //  TenorTrialTask
 //
 //  Created by Vasyl Mytko on 21.06.2022.
 //
 
-import Foundation
 import CoreData
-
-protocol FavouritesStorage {
-    func add(gif: GIF)
-    func remove(gif: GIF)
-    func isFavourite(gif: GIF) -> Bool
-}
 
 final class CoreDataFavouritesStorage: FavouritesStorage {
     
