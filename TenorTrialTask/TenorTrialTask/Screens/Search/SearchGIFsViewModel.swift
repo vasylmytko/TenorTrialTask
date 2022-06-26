@@ -10,6 +10,13 @@ import Combine
 import CombineExt
 
 struct SearchGIFs {
+    enum State {
+        case idle(StateInfo)
+        case loading
+        case error(StateInfo)
+        case results([DefaultGIFCellViewModel])
+    }
+    
     struct Inputs {
         let onAppear: PassthroughSubject<Void, Never>
         let search: PassthroughSubject<String?, Never>
@@ -18,7 +25,7 @@ struct SearchGIFs {
     }
     
     struct Outputs {
-        let items: AnyPublisher<[DefaultGIFCellViewModel], Never>
+        let state: AnyPublisher<State, Never>
     }
 }
 
@@ -32,8 +39,9 @@ final class DefaultSearchGIFsViewModel: SearchGIFsViewModel {
     let inputs: SearchGIFs.Inputs
     let outputs: SearchGIFs.Outputs
     
-    private let viewModelsSubject: CurrentValueSubject<[DefaultGIFCellViewModel], Never> = .init([])
     private var cancellable: Set<AnyCancellable> = []
+    private let stateSubject: CurrentValueSubject<SearchGIFs.State, Never> = .init(.loading)
+    private let gifSelected: AnyPublisher<DefaultGIFCellViewModel, Never>
     
     private let fetchGIFsUseCase: FetchGIFsUseCase
     private let updateFavouritesUseCase: UpdateFavouritesUseCase
@@ -51,16 +59,27 @@ final class DefaultSearchGIFsViewModel: SearchGIFsViewModel {
             selectedIndexPath: .init()
         )
         self.outputs = .init(
-            items: viewModelsSubject.eraseToAnyPublisher()
+            state: stateSubject.eraseToAnyPublisher()
         )
+        let gifs = outputs.state
+            .compactMap { state -> [DefaultGIFCellViewModel]? in
+                if case .results(let viewModels) = state {
+                    return viewModels
+                } else {
+                    return nil
+                }
+            }
+            .eraseToAnyPublisher()
+        
+        self.gifSelected = inputs.selectedIndexPath.viewModel(viewModels: gifs)
         configureInputs()
         configureOutputs()
     }
     
     private func configureInputs() {
-        inputs.selectedIndexPath
-            .sink { [weak self] indexPath in
-                self?.selectedGIF(at: indexPath)
+        gifSelected
+            .sink { [weak self] viewModel in
+                self?.selectedGif(viewModel)
             }
             .store(in: &cancellable)
     }
@@ -70,18 +89,20 @@ final class DefaultSearchGIFsViewModel: SearchGIFsViewModel {
             .map { String.defaultSearchTerm }
             .mapToOptional()
             
+        let loading = inputs.search
+            .compactMap { $0 }
+            .map { $0.isEmpty ? SearchGIFs.State.idle(.idleInfo) : SearchGIFs.State.loading }
+        
         let textChanged = inputs.search
             .removeDuplicates()
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
         
         let reachedBottom = inputs.reachedBottom
-            .withLatestFrom(inputs.search.prepend(nil))
+            .withLatestFrom(inputs.search.prepend(.defaultSearchTerm))
         
-        Publishers.Merge3(onAppear, textChanged, reachedBottom)
-            .replaceNil(with: .defaultSearchTerm)
-            .replaceEmpty(with: .defaultSearchTerm)
+        let loaded = Publishers.Merge3(textChanged, reachedBottom, onAppear)
+            .filterOutEmpty()
             .searchGIFs(useCaseProvider: { [weak self] in self?.fetchGIFsUseCase })
-            .ignoreFailure()
             .scan(.initial) { (result, nextSearchResult) -> SearchResult in
                 if result.searchTerm == nextSearchResult.searchTerm {
                     return SearchResult(searchTerm: nextSearchResult.searchTerm, gifs: result.gifs + nextSearchResult.gifs)
@@ -90,31 +111,18 @@ final class DefaultSearchGIFsViewModel: SearchGIFsViewModel {
                 }
             }
             .map { searchResult in
-                searchResult.gifs.map { DefaultGIFCellViewModel(gif: $0) }
+                SearchGIFs.State.results(searchResult.gifs.map { DefaultGIFCellViewModel(gif: $0) })
             }
-            .subscribe(viewModelsSubject)
+            .catch { _ in Just(SearchGIFs.State.error(.errorInfo)) }
+    
+        Publishers.Merge(loading, loaded)
+            .subscribe(stateSubject)
             .store(in: &cancellable)
     }
     
-    private func selectedGIF(at indexPath: IndexPath) {
-        guard viewModelsSubject.value.indices.contains(indexPath.item) else {
-            return
-        }
-        let viewModel = viewModelsSubject.value[indexPath.item]
-        viewModelsSubject.value[indexPath.item].setIsFavourite(!viewModel.gif.isFavourite)
-        var gif = viewModel.gif
-        gif.isFavourite.toggle()
-        updateFavouritesUseCase.execute(gif: gif)
-    }
-}
-
-public extension Publisher {
-    func mapToVoid() -> AnyPublisher<Void, Failure> {
-        return map { _ in }.eraseToAnyPublisher()
-    }
-    
-    func mapToOptional() -> AnyPublisher<Output?, Failure> {
-        map { Optional<Output>.some($0) }.eraseToAnyPublisher()
+    private func selectedGif(_ gifCellViewModel: DefaultGIFCellViewModel) {
+        gifCellViewModel.toggleIsFavourite()
+        updateFavouritesUseCase.execute(gif: gifCellViewModel.gif)
     }
 }
 
@@ -127,12 +135,6 @@ struct SearchResult {
     let gifs: [GIF]
     
     static let initial = SearchResult(searchTerm: "", gifs: [])
-}
-
-extension Publisher where Output: Collection {
-    func replaceEmpty(with defaultValue: Output) -> AnyPublisher<Output, Failure> {
-        map { $0.isEmpty ? defaultValue : $0 }.eraseToAnyPublisher()
-    }
 }
 
 extension Publisher where Output == String, Failure == Never {
@@ -151,6 +153,18 @@ extension Publisher where Output == String, Failure == Never {
                         }
                     }
                 }
+            }
+            .eraseToAnyPublisher()
+    }
+}
+
+extension Publisher where Output == IndexPath {
+    func viewModel(
+        viewModels: AnyPublisher<[DefaultGIFCellViewModel], Failure>
+    ) -> AnyPublisher<DefaultGIFCellViewModel, Failure> {
+        return map(\.item)
+            .withLatestFrom(viewModels) { index, models in
+                return models[index]
             }
             .eraseToAnyPublisher()
     }

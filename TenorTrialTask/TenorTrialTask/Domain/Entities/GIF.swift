@@ -12,5 +12,5 @@ struct GIF: Hashable {
     let url: URL
     let dimensions: [Int]
     var isFavourite: Bool
-    let data: Data? = nil
+    var data: Data? = nil
 }

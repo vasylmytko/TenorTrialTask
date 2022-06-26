@@ -10,7 +10,7 @@ import CoreData
 protocol CoreDataManager {
     var managedObjectContext: NSManagedObjectContext { get }
     
-    func create(object: NSManagedObject, completionBlock: (Result<Void, Error>) -> Void)
+    func create(object: NSManagedObject)
     func delete(object: NSManagedObject)
     func fetch(with predicate: NSPredicate) -> NSManagedObject? 
 }
@@ -29,26 +29,19 @@ final class DefaultCoreDataManager: CoreDataManager {
         return container
     }()
 
-    private(set) lazy var privateManagedObjectContext: NSManagedObjectContext = {
-        let context = persistentContainer.newBackgroundContext()
-        context.mergePolicy = NSMergePolicy(merge: .mergeByPropertyStoreTrumpMergePolicyType)
-        return context
-    }()
-
     private(set) lazy var managedObjectContext: NSManagedObjectContext = {
         let context = persistentContainer.viewContext
         return context
     }()
     
-    func create(object: NSManagedObject, completionBlock: (Result<Void, Error>) -> Void) {
+    func create(object: NSManagedObject) {
         guard managedObjectContext.hasChanges else {
             return
         }
         do {
             try managedObjectContext.save()
-            completionBlock(.success)
         } catch let error {
-            completionBlock(.failure(error))
+            print("Error occured while saving: \(error)")
         }
     }
     
@@ -68,7 +61,7 @@ final class DefaultCoreDataManager: CoreDataManager {
             let objects = try managedObjectContext.fetch(fetchRequest)
             return objects.first
         } catch let error {
-            print("error fetching: \(error)")
+            print("Error occured while saving: \(error)")
             return nil
         }
     }

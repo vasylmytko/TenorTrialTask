@@ -7,6 +7,13 @@
 
 import Foundation
 
+@discardableResult
+public func mutated<T>(_ value: T, configure: (inout T) -> Void) -> T {
+    var copy = value
+    configure(&copy)
+    return copy
+}
+
 protocol UpdateFavouritesUseCase {
     func execute(gif: GIF)
 }
@@ -23,7 +30,12 @@ final class DefaultUpdateFavouritesUseCase: UpdateFavouritesUseCase {
         if gif.isFavourite {
             favouritesStorage.remove(gif: gif)
         } else {
-            favouritesStorage.add(gif: gif)
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: gif.url)
+                DispatchQueue.main.async {
+                    self.favouritesStorage.add(gif: mutated(gif) { $0.data = data })
+                }
+            }
         }
     }
 }

@@ -23,17 +23,9 @@ final class CoreDataFavouritesStorage: FavouritesStorage {
     }
     
     func add(gif: GIF) {
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: gif.url)
-            DispatchQueue.main.async {
-                let gifMO = gif.toManagedObject(context: self.coreDataStorage.managedObjectContext)
-                gifMO.data = data
-                gifMO.dateCreated = Date()
-                self.coreDataStorage.create(object: gifMO) { _ in
-                    print("saved")
-                }
-            }
-        }
+        let gifMO = gif.toManagedObject(context: self.coreDataStorage.managedObjectContext)
+        gifMO.dateCreated = Date()
+        coreDataStorage.create(object: gifMO)
     }
     
     func remove(gif: GIF) {

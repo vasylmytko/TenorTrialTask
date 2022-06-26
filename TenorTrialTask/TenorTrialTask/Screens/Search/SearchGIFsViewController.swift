@@ -13,8 +13,10 @@ final class SearchGIFsViewController: UIViewController {
         
     // MARK: - UI properties
     
-    private let searchController: UISearchController = .init()
+    private let searchController: UISearchController = .make()
+    private let stateInfoView: StateInfoView = .make()
     private let collectionView: UICollectionView = .make()
+    private let activityIndicatorView: UIActivityIndicatorView = .make()
 
     // MARK: - Helper properties
         
@@ -33,8 +35,8 @@ final class SearchGIFsViewController: UIViewController {
         self.collectionView.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
         
-        navigationItem.searchController = searchController
         navigationItem.title = "Search"
+        view.backgroundColor = .black
         configureViewHierarchy()
         configureLayout()
         configureSubviews()
@@ -68,17 +70,48 @@ final class SearchGIFsViewController: UIViewController {
             .mapToOptional()
             .subscribe(viewModel.inputs.search)
             .store(in: &cancellable)
-        
-        searchController.searchBar.cancelButtonClickedPublisher
-            .map { "" }
-            .subscribe(viewModel.inputs.search)
-            .store(in: &cancellable)
     }
     
     private func configureOutputs() {
-        viewModel.outputs.items
+        viewModel.outputs.state
             .receive(on: DispatchQueue.main)
-            .subscribe(dataSource.snapshotSubscriber(animated: false))
+            .sink { [weak self] state in
+                self?.configureUI(with: state)
+            }
+            .store(in: &cancellable)
+    }
+    
+    private func configureUI(with state: SearchGIFs.State) {
+        switch state {
+        case .idle(let stateInfo):
+            configureStateView(with: stateInfo)
+        case .error(let stateInfo):
+            configureStateView(with: stateInfo)
+        case .results(let viewModels):
+            configureUIForResults(viewModels)
+        case .loading:
+            configureUIForLoading()
+        }
+    }
+    
+    private func configureUIForResults(_ results: [DefaultGIFCellViewModel]) {
+        dataSource.reloadWithGIFs(results)
+        collectionView.show()
+        stateInfoView.hide()
+        activityIndicatorView.hide()
+    }
+    
+    private func configureStateView(with stateInfo: StateInfo) {
+        stateInfoView.setStateInfo(stateInfo)
+        stateInfoView.show()
+        collectionView.hide()
+        activityIndicatorView.hide()
+    }
+    
+    private func configureUIForLoading() {
+        stateInfoView.hide()
+        collectionView.hide()
+        activityIndicatorView.show()
     }
 }
 
@@ -86,7 +119,10 @@ final class SearchGIFsViewController: UIViewController {
 
 private extension SearchGIFsViewController {
     func configureSubviews() {
-        collectionView.setCollectionViewLayout(.makeWaterfall(itemSizeProvider: dataSource), animated: false)
+        collectionView.setCollectionViewLayout(
+            .makeWaterfall(configuration: .gifs(itemSizeProvider: dataSource)),
+            animated: false
+        )
     }
 }
 
@@ -94,6 +130,9 @@ private extension SearchGIFsViewController {
 
 private extension SearchGIFsViewController {
     func configureViewHierarchy() {
+        navigationItem.searchController = searchController
+        view.addSubview(activityIndicatorView)
+        view.addSubview(stateInfoView)
         view.addSubview(collectionView)
     }
 }
@@ -102,26 +141,66 @@ private extension SearchGIFsViewController {
 
 private extension SearchGIFsViewController {
     func configureLayout() {
+        collectionView.constraintToEdges(of: view.safeAreaLayoutGuide)
+        
         NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            activityIndicatorView.widthAnchor.constraint(equalToConstant: 40),
+            activityIndicatorView.heightAnchor.constraint(equalTo: activityIndicatorView.widthAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            stateInfoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stateInfoView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stateInfoView.heightAnchor.constraint(equalToConstant: 170),
+            stateInfoView.widthAnchor.constraint(equalToConstant: 300)
         ])
     }
 }
 
 // MARK: - Factories
 
+extension UISearchController {
+    static func make() -> UISearchController {
+        let searchController = UISearchController()
+        searchController.searchBar.returnKeyType = .done
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.automaticallyShowsCancelButton = false
+        searchController.searchBar.enablesReturnKeyAutomatically = false
+        return searchController
+    }
+}
+
 extension UICollectionView {
     static func make() -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .black
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.keyboardDismissMode = .onDrag
         collectionView.register(GIFCell.self, forCellWithReuseIdentifier: GIFCell.cellIdentifier)
         collectionView.alwaysBounceVertical = true
         return collectionView
+    }
+}
+
+extension UIActivityIndicatorView {
+    static func make() -> UIActivityIndicatorView {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.isHidden = true
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicatorView.style = .large
+        activityIndicatorView.startAnimating()
+        return activityIndicatorView
+    }
+}
+
+extension StateInfoView {
+    static func make() -> StateInfoView {
+        let stateInfoView = StateInfoView()
+        stateInfoView.translatesAutoresizingMaskIntoConstraints = false
+        return stateInfoView
     }
 }
 
@@ -133,11 +212,13 @@ extension UICollectionViewDiffableDataSource where SectionIdentifierType == Sing
             return cell
         }
     }
-}
-
-protocol WaterfallLayoutItemSizeProvider {
-    func sizeForItem(at indexPath: IndexPath) -> CGSize
-    func numberOfItems(in section: Int) -> Int
+    
+    func reloadWithGIFs(_ viewModels: [DefaultGIFCellViewModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<SingleSection, DefaultGIFCellViewModel>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(viewModels, toSection: .main)
+        apply(snapshot, animatingDifferences: false)
+    }
 }
 
 extension SingleSectionCollectionViewDataSource: WaterfallLayoutItemSizeProvider where ItemIdentifierType == DefaultGIFCellViewModel {

@@ -10,6 +10,11 @@
 		AC21CFF12863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC21CFF02863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift */; };
 		AC32B484285FC8E800AD9458 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC32B483285FC8E800AD9458 /* FavouritesViewController.swift */; };
 		AC32B486285FC8F200AD9458 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC32B485285FC8F100AD9458 /* FavouritesViewModel.swift */; };
+		AC586E49286756730087704D /* StateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC586E48286756730087704D /* StateInfoView.swift */; };
+		AC586E4F2867D4700087704D /* WaterfallLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC586E4E2867D4700087704D /* WaterfallLayoutConfiguration.swift */; };
+		AC586E512867D4950087704D /* LayoutItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC586E502867D4950087704D /* LayoutItemProvider.swift */; };
+		AC586E532867D8950087704D /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC586E522867D8950087704D /* GradientView.swift */; };
+		AC586E552867D9F40087704D /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC586E542867D9F40087704D /* UIView+Extensions.swift */; };
 		AC6FA2552864B3840014BCB2 /* GIFCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6FA2542864B3840014BCB2 /* GIFCellViewModel.swift */; };
 		AC6FA257286505EC0014BCB2 /* UpdateFavouritesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6FA256286505EC0014BCB2 /* UpdateFavouritesUseCase.swift */; };
 		AC6FA25F286516C90014BCB2 /* GIFsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6FA25E286516C90014BCB2 /* GIFsPage.swift */; };
@@ -31,10 +36,11 @@
 		AC8BA0CB285D01B7009CF8F1 /* SearchGIFsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CA285D01B7009CF8F1 /* SearchGIFsViewController.swift */; };
 		AC8BA0CE285D01F5009CF8F1 /* SearchGIFsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CD285D01F5009CF8F1 /* SearchGIFsViewModel.swift */; };
 		AC8BA0D0285D04E9009CF8F1 /* GIFCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */; };
+		AC9C90FE2867E1E400943DF2 /* Publisher+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9C90FD2867E1E400943DF2 /* Publisher+Extensions.swift */; };
 		ACABA096285E0ACB00FD7067 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = ACABA095285E0ACB00FD7067 /* SDWebImage */; };
 		ACABA098285E56ED00FD7067 /* GIFsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACABA097285E56ED00FD7067 /* GIFsRepository.swift */; };
 		ACABA09D285E6A0300FD7067 /* Tenor-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACABA09C285E6A0300FD7067 /* Tenor-Info.plist */; };
-		ACB56AF1286679F7008CD341 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB56AF0286679F7008CD341 /* WaterfallLayout.swift */; };
+		ACB56AF1286679F7008CD341 /* UICollectionViewLayout+Waterfall.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB56AF0286679F7008CD341 /* UICollectionViewLayout+Waterfall.swift */; };
 		ACED9836285D0FDC004395B0 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED9835285D0FDC004395B0 /* DataService.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +65,11 @@
 		AC21CFF02863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewDiffableDataSource+SnapshotSubscriber.swift"; sourceTree = "<group>"; };
 		AC32B483285FC8E800AD9458 /* FavouritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		AC32B485285FC8F100AD9458 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
+		AC586E48286756730087704D /* StateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateInfoView.swift; sourceTree = "<group>"; };
+		AC586E4E2867D4700087704D /* WaterfallLayoutConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayoutConfiguration.swift; sourceTree = "<group>"; };
+		AC586E502867D4950087704D /* LayoutItemProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutItemProvider.swift; sourceTree = "<group>"; };
+		AC586E522867D8950087704D /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		AC586E542867D9F40087704D /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		AC6FA2542864B3840014BCB2 /* GIFCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCellViewModel.swift; sourceTree = "<group>"; };
 		AC6FA256286505EC0014BCB2 /* UpdateFavouritesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFavouritesUseCase.swift; sourceTree = "<group>"; };
 		AC6FA25E286516C90014BCB2 /* GIFsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFsPage.swift; sourceTree = "<group>"; };
@@ -82,9 +93,10 @@
 		AC8BA0CA285D01B7009CF8F1 /* SearchGIFsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGIFsViewController.swift; sourceTree = "<group>"; };
 		AC8BA0CD285D01F5009CF8F1 /* SearchGIFsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGIFsViewModel.swift; sourceTree = "<group>"; };
 		AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCell.swift; sourceTree = "<group>"; };
+		AC9C90FD2867E1E400943DF2 /* Publisher+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extensions.swift"; sourceTree = "<group>"; };
 		ACABA097285E56ED00FD7067 /* GIFsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFsRepository.swift; sourceTree = "<group>"; };
 		ACABA09C285E6A0300FD7067 /* Tenor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tenor-Info.plist"; sourceTree = "<group>"; };
-		ACB56AF0286679F7008CD341 /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
+		ACB56AF0286679F7008CD341 /* UICollectionViewLayout+Waterfall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayout+Waterfall.swift"; sourceTree = "<group>"; };
 		ACED9835285D0FDC004395B0 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				AC21CFF02863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift */,
+				AC586E542867D9F40087704D /* UIView+Extensions.swift */,
+				AC9C90FD2867E1E400943DF2 /* Publisher+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -131,6 +145,26 @@
 				AC32B485285FC8F100AD9458 /* FavouritesViewModel.swift */,
 			);
 			path = Favourites;
+			sourceTree = "<group>";
+		};
+		AC586E4C2867A8D70087704D /* GIFCell */ = {
+			isa = PBXGroup;
+			children = (
+				AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */,
+				AC6FA2542864B3840014BCB2 /* GIFCellViewModel.swift */,
+				AC586E522867D8950087704D /* GradientView.swift */,
+			);
+			path = GIFCell;
+			sourceTree = "<group>";
+		};
+		AC586E4D2867D4510087704D /* WaterfallLayout */ = {
+			isa = PBXGroup;
+			children = (
+				ACB56AF0286679F7008CD341 /* UICollectionViewLayout+Waterfall.swift */,
+				AC586E4E2867D4700087704D /* WaterfallLayoutConfiguration.swift */,
+				AC586E502867D4950087704D /* LayoutItemProvider.swift */,
+			);
+			path = WaterfallLayout;
 			sourceTree = "<group>";
 		};
 		AC6FA25A286516540014BCB2 /* Screens */ = {
@@ -145,8 +179,8 @@
 		AC6FA25B2865167D0014BCB2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AC8BA0CF285D04E9009CF8F1 /* GIFCell.swift */,
-				AC6FA2542864B3840014BCB2 /* GIFCellViewModel.swift */,
+				AC586E4C2867A8D70087704D /* GIFCell */,
+				AC586E48286756730087704D /* StateInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -262,10 +296,10 @@
 		AC8BA0CC285D01DA009CF8F1 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				AC586E4D2867D4510087704D /* WaterfallLayout */,
 				AC6FA25B2865167D0014BCB2 /* Views */,
 				AC8BA0CA285D01B7009CF8F1 /* SearchGIFsViewController.swift */,
 				AC8BA0CD285D01F5009CF8F1 /* SearchGIFsViewModel.swift */,
-				ACB56AF0286679F7008CD341 /* WaterfallLayout.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -429,15 +463,21 @@
 				AC8BA0CB285D01B7009CF8F1 /* SearchGIFsViewController.swift in Sources */,
 				AC21CFF12863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift in Sources */,
 				AC8BA098285CE973009CF8F1 /* AppDelegate.swift in Sources */,
-				ACB56AF1286679F7008CD341 /* WaterfallLayout.swift in Sources */,
+				ACB56AF1286679F7008CD341 /* UICollectionViewLayout+Waterfall.swift in Sources */,
 				AC72FFD1286231E7008F6B21 /* TenorGIFsResponse.swift in Sources */,
 				AC72FFCF28623194008F6B21 /* GIF.swift in Sources */,
 				AC72FFD32862347D008F6B21 /* FavouritesStorage.swift in Sources */,
+				AC586E512867D4950087704D /* LayoutItemProvider.swift in Sources */,
 				AC6FA2552864B3840014BCB2 /* GIFCellViewModel.swift in Sources */,
+				AC586E532867D8950087704D /* GradientView.swift in Sources */,
+				AC586E4F2867D4700087704D /* WaterfallLayoutConfiguration.swift in Sources */,
 				ACABA098285E56ED00FD7067 /* GIFsRepository.swift in Sources */,
 				AC8BA0A2285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld in Sources */,
+				AC9C90FE2867E1E400943DF2 /* Publisher+Extensions.swift in Sources */,
+				AC586E49286756730087704D /* StateInfoView.swift in Sources */,
 				AC6FA25F286516C90014BCB2 /* GIFsPage.swift in Sources */,
 				AC8BA09A285CE973009CF8F1 /* SceneDelegate.swift in Sources */,
+				AC586E552867D9F40087704D /* UIView+Extensions.swift in Sources */,
 				AC72FFDB28623BA7008F6B21 /* FetchGIFsUseCase.swift in Sources */,
 				AC32B484285FC8E800AD9458 /* FavouritesViewController.swift in Sources */,
 				ACED9836285D0FDC004395B0 /* DataService.swift in Sources */,

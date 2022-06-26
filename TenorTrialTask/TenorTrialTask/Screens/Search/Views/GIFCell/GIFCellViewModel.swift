@@ -18,7 +18,7 @@ struct GIFCellModel {
 protocol GIFCellViewModel: HashableByID {
     var gif: GIF { get }
     var outputs: GIFCellModel.Outputs { get }
-    func setIsFavourite(_ isFavourite: Bool)
+    func toggleIsFavourite()
 }
 
 final class DefaultGIFCellViewModel: GIFCellViewModel {
@@ -27,20 +27,21 @@ final class DefaultGIFCellViewModel: GIFCellViewModel {
         return gif.id
     }
     
-    var gif: GIF
-    private let isFavouriteUpdate: PassthroughSubject<Bool, Never> = .init()
+    private(set) var gif: GIF
+    private let isFavouriteUpdate: CurrentValueSubject<Bool, Never>
     
     public init(gif: GIF) {
         self.gif = gif
+        self.isFavouriteUpdate = .init(gif.isFavourite)
         self.outputs = .init(
             gifURL: Just(gif.url).eraseToAnyPublisher(),
-            isFavourite: Publishers.Merge(Just(gif.isFavourite), isFavouriteUpdate).eraseToAnyPublisher()
+            isFavourite: isFavouriteUpdate.eraseToAnyPublisher()
         )
     }
     
-    func setIsFavourite(_ isFavourite: Bool) {
-        gif.isFavourite = isFavourite
-        isFavouriteUpdate.send(isFavourite)
+    func toggleIsFavourite() {
+        gif.isFavourite.toggle()
+        isFavouriteUpdate.send(gif.isFavourite)
     }
 }
 

@@ -9,20 +9,6 @@ import UIKit
 import SDWebImage
 import Combine
 
-class GradientView: UIView {
-    override class var layerClass: Swift.AnyClass {
-        return CAGradientLayer.self
-    }
-
-    var gradientLayer: CAGradientLayer? {
-        return layer as? CAGradientLayer
-    }
-
-    func applyGradientColors(_ colors: [UIColor?]) {
-        gradientLayer?.colors = colors.compactMap { $0?.cgColor }
-    }
-}
-
 final class GIFCell: UICollectionViewCell {
     
     static let cellIdentifier = "gifCell"
@@ -85,19 +71,8 @@ private extension GIFCell {
 
 private extension GIFCell {
     func configureLayout() {
-        NSLayoutConstraint.activate([
-            gradientView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            gradientView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            gradientView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            gradientView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
+        gradientView.constraintToEdges(of: contentView)
+        imageView.constraintToEdges(of: contentView)
         
         NSLayoutConstraint.activate([
             favouriteIcon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
@@ -145,12 +120,6 @@ extension GIF {
         dimensions: [],
         isFavourite: false
     )
-}
-
-public extension Publisher where Output == Bool {
-    func toggle() -> Publishers.Map<Self, Bool> {
-        map(!)
-    }
 }
 
 extension SDAnimatedImageView {

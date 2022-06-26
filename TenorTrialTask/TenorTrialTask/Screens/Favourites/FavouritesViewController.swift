@@ -20,10 +20,11 @@ final class FavouritesViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         
+        view.backgroundColor = .black
         navigationItem.title = "Favourites"
+        configureSubviews()
         configureViewHierarchy()
         configureLayout()
-        configureSubviews()
         configureBindings()
     }
     
@@ -64,8 +65,11 @@ extension FavouritesViewController: UICollectionViewDataSource {
 
 extension FavouritesViewController {
     func configureSubviews() {
+        collectionView.setCollectionViewLayout(
+            .makeWaterfall(configuration: .gifs(itemSizeProvider: self)),
+            animated: false
+        )
         collectionView.dataSource = self
-        collectionView.setCollectionViewLayout(.makeWaterfall(itemSizeProvider: self), animated: false)
     }
 }
 
@@ -94,11 +98,6 @@ extension FavouritesViewController {
 
 extension FavouritesViewController {
     func configureLayout() {
-        NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        collectionView.constraintToEdges(of: view)
     }
 }

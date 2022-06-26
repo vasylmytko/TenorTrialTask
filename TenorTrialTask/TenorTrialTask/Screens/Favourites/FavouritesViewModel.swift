@@ -63,7 +63,8 @@ extension GifMO {
             id: id,
             url: url,
             dimensions: dimensions ?? [],
-            isFavourite: true
+            isFavourite: true,
+            data: data
         )
     }
 }
