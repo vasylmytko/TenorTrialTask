@@ -77,12 +77,12 @@ struct StateInfo {
 
 extension StateInfo {
     static let errorInfo = StateInfo(
-        icon: UIImage(systemName: "magnifyingglass"),
-        message: "Type text in search bar"
+        icon: UIImage(systemName: "xmark"),
+        message: "Error occured while fetching gifs"
     )
     
     static let idleInfo = StateInfo(
-        icon: UIImage(systemName: "xmark"),
-        message: "Error occured while fetching gifs"
+        icon: UIImage(systemName: "magnifyingglass"),
+        message: "Type text in search bar"
     )
 }

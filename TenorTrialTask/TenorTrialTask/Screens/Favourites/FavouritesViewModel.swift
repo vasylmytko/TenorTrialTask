@@ -11,6 +11,7 @@ import Combine
 
 protocol FavouritesViewModel {
     var numberOfItems: Int { get }
+    var onLoad: PassthroughSubject<Void, Never> { get }
     var dataReloaded: AnyPublisher<Void, Never> { get }
     
     func itemAt(indexPath: IndexPath) -> DefaultGIFCellViewModel?
@@ -20,14 +21,17 @@ typealias GIFFetchedResultsController = NSFetchedResultsController<GifMO>
 
 final class DefaultFavouritesViewModel: NSObject, FavouritesViewModel {
 
-    private let fetchedResultsController: GIFFetchedResultsController
-    private let dataReloadedSubject: PassthroughSubject<Void, Never> = .init()
+    let onLoad: PassthroughSubject<Void, Never> = .init()
+    let dataReloaded: AnyPublisher<Void, Never>
     
     var numberOfItems: Int {
         return fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
-    let dataReloaded: AnyPublisher<Void, Never>
+    private let dataReloadedSubject: PassthroughSubject<Void, Never> = .init()
+    private var cancellable: Set<AnyCancellable> = []
+    
+    private let fetchedResultsController: GIFFetchedResultsController
     
     init(fetchedResultsController: GIFFetchedResultsController) {
         self.fetchedResultsController = fetchedResultsController
@@ -35,7 +39,7 @@ final class DefaultFavouritesViewModel: NSObject, FavouritesViewModel {
         super.init()
         
         fetchedResultsController.delegate = self
-        try? fetchedResultsController.performFetch()
+        configureInputs()
     }
  
     func itemAt(indexPath: IndexPath) -> DefaultGIFCellViewModel? {
@@ -45,6 +49,14 @@ final class DefaultFavouritesViewModel: NSObject, FavouritesViewModel {
         }
         gif.isFavourite = false
         return DefaultGIFCellViewModel(gif: gif)
+    }
+    
+    private func configureInputs() {
+        onLoad
+            .sink { [weak self] in
+                try? self?.fetchedResultsController.performFetch()
+            }
+            .store(in: &cancellable)
     }
 }
 
