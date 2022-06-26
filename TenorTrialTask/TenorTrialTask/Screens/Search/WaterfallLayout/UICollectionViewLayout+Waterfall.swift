@@ -11,8 +11,11 @@ extension UICollectionViewLayout {
     static func makeWaterfall(configuration: WaterfallLayoutConfiguration) -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { section, environment in
             let itemProvider = LayoutItemProvider(configuration: configuration, environment: environment)
-            let items: [NSCollectionLayoutGroupCustomItem] = Array(0..<configuration.itemSizeProvider.numberOfItems(in: section))
+            
+            let numberOfItems = configuration.itemSizeProvider.numberOfItems(in: section)
+            let items: [NSCollectionLayoutGroupCustomItem] = Array(0..<numberOfItems)
                 .map { itemProvider.item(for: IndexPath(item: $0, section: section)) }
+            
             let heightFraction = (itemProvider.columnHeights.max() ?? 0) / environment.container.contentSize.height
             
             let groupLayoutSize = NSCollectionLayoutSize(

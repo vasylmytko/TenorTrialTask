@@ -61,17 +61,7 @@ final class DefaultSearchGIFsViewModel: SearchGIFsViewModel {
         self.outputs = .init(
             state: stateSubject.eraseToAnyPublisher()
         )
-        let gifs = outputs.state
-            .compactMap { state -> [DefaultGIFCellViewModel]? in
-                if case .results(let viewModels) = state {
-                    return viewModels
-                } else {
-                    return nil
-                }
-            }
-            .eraseToAnyPublisher()
-        
-        self.gifSelected = inputs.selectedIndexPath.viewModel(viewModels: gifs)
+        self.gifSelected = inputs.selectedIndexPath.viewModel(viewModels: outputs.state.gifViewModels())
         configureInputs()
         configureOutputs()
     }
@@ -103,16 +93,7 @@ final class DefaultSearchGIFsViewModel: SearchGIFsViewModel {
         let loaded = Publishers.Merge3(textChanged, reachedBottom, onAppear)
             .filterOutEmpty()
             .searchGIFs(useCaseProvider: { [weak self] in self?.fetchGIFsUseCase })
-            .scan(.initial) { (result, nextSearchResult) -> SearchResult in
-                if result.searchTerm == nextSearchResult.searchTerm {
-                    return SearchResult(
-                        searchTerm: nextSearchResult.searchTerm,
-                        gifsViewModels: result.gifsViewModels + nextSearchResult.gifsViewModels
-                    )
-                } else {
-                    return nextSearchResult
-                }
-            }
+            .scanResults()
             .map { SearchGIFs.State.results($0.gifsViewModels) }
             .catch { _ in Just(SearchGIFs.State.error(.errorInfo)) }
     
@@ -138,6 +119,20 @@ struct SearchResult {
     static let initial = SearchResult(searchTerm: "", gifsViewModels: [])
 }
 
+extension Publisher where Output == SearchGIFs.State {
+    func gifViewModels() -> AnyPublisher<[DefaultGIFCellViewModel], Failure> {
+        self
+            .compactMap { state in
+                if case .results(let viewModels) = state {
+                    return viewModels
+                } else {
+                    return nil
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+}
+
 extension Publisher where Output == String, Failure == Never {
     func searchGIFs(
         useCaseProvider: @escaping () -> FetchGIFsUseCase?
@@ -156,6 +151,23 @@ extension Publisher where Output == String, Failure == Never {
                             promise(.failure(error))
                         }
                     }
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+}
+
+extension Publisher where Output == SearchResult {
+    func scanResults() -> AnyPublisher<SearchResult, Failure> {
+        self
+            .scan(.initial) { (result, nextSearchResult) in
+                if result.searchTerm == nextSearchResult.searchTerm {
+                    return SearchResult(
+                        searchTerm: nextSearchResult.searchTerm,
+                        gifsViewModels: result.gifsViewModels + nextSearchResult.gifsViewModels
+                    )
+                } else {
+                    return nextSearchResult
                 }
             }
             .eraseToAnyPublisher()

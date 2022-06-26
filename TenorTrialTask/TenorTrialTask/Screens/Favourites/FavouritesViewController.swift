@@ -75,14 +75,7 @@ extension FavouritesViewController {
 
 extension FavouritesViewController: WaterfallLayoutItemSizeProvider {
     func sizeForItem(at indexPath: IndexPath) -> CGSize {
-        guard
-            let dimensions = viewModel.itemAt(indexPath: indexPath)?.gif.dimensions,
-            let width = dimensions.first,
-            let height = dimensions.last
-        else {
-            return .zero
-        }
-        return CGSize(width: width, height: height)
+        return viewModel.itemAt(indexPath: indexPath)?.gif.size ?? .zero
     }
     
     func numberOfItems(in section: Int) -> Int {

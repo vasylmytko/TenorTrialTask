@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC21CFF12863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC21CFF02863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift */; };
 		AC32B484285FC8E800AD9458 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC32B483285FC8E800AD9458 /* FavouritesViewController.swift */; };
 		AC32B486285FC8F200AD9458 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC32B485285FC8F100AD9458 /* FavouritesViewModel.swift */; };
 		AC586E49286756730087704D /* StateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC586E48286756730087704D /* StateInfoView.swift */; };
@@ -62,7 +61,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AC21CFF02863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewDiffableDataSource+SnapshotSubscriber.swift"; sourceTree = "<group>"; };
 		AC32B483285FC8E800AD9458 /* FavouritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		AC32B485285FC8F100AD9458 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
 		AC586E48286756730087704D /* StateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateInfoView.swift; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 		AC21CFEF2863A50000BF9E07 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				AC21CFF02863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift */,
 				AC586E542867D9F40087704D /* UIView+Extensions.swift */,
 				AC9C90FD2867E1E400943DF2 /* Publisher+Extensions.swift */,
 			);
@@ -461,7 +458,6 @@
 				AC6FA257286505EC0014BCB2 /* UpdateFavouritesUseCase.swift in Sources */,
 				AC8BA0D0285D04E9009CF8F1 /* GIFCell.swift in Sources */,
 				AC8BA0CB285D01B7009CF8F1 /* SearchGIFsViewController.swift in Sources */,
-				AC21CFF12863A52E00BF9E07 /* UICollectionViewDiffableDataSource+SnapshotSubscriber.swift in Sources */,
 				AC8BA098285CE973009CF8F1 /* AppDelegate.swift in Sources */,
 				ACB56AF1286679F7008CD341 /* UICollectionViewLayout+Waterfall.swift in Sources */,
 				AC72FFD1286231E7008F6B21 /* TenorGIFsResponse.swift in Sources */,

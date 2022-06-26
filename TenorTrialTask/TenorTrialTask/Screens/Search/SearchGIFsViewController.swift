@@ -9,6 +9,9 @@ import UIKit
 import Combine
 import CombineCocoa
 
+typealias SingleSectionCollectionViewDataSource<T: Hashable> =
+    UICollectionViewDiffableDataSource<SingleSection, T>
+
 final class SearchGIFsViewController: UIViewController {
         
     // MARK: - UI properties
@@ -204,6 +207,12 @@ extension StateInfoView {
     }
 }
 
+// MARK: - Helpers
+
+enum SingleSection {
+    case main
+}
+
 extension UICollectionViewDiffableDataSource where SectionIdentifierType == SingleSection, ItemIdentifierType == DefaultGIFCellViewModel {
     static func make(collectionView: UICollectionView) -> SingleSectionCollectionViewDataSource<DefaultGIFCellViewModel> {
         return .init(collectionView: collectionView) { collectionView, indexPath, item in
@@ -223,17 +232,19 @@ extension UICollectionViewDiffableDataSource where SectionIdentifierType == Sing
 
 extension SingleSectionCollectionViewDataSource: WaterfallLayoutItemSizeProvider where ItemIdentifierType == DefaultGIFCellViewModel {
     func sizeForItem(at indexPath: IndexPath) -> CGSize {
-        guard
-            let dimensions = itemIdentifier(for: indexPath)?.gif.dimensions,
-            let width = dimensions.first,
-            let height = dimensions.last
-        else {
-            return .zero
-        }
-        return CGSize(width: width, height: height)
+        return itemIdentifier(for: indexPath)?.gif.size ?? .zero
     }
     
     func numberOfItems(in section: Int) -> Int {
         return snapshot().itemIdentifiers.count
+    }
+}
+
+extension GIF {
+    var size: CGSize {
+        guard let width = dimensions.first, let height = dimensions.last else {
+            return .zero
+        }
+        return CGSize(width: width, height: height)
     }
 }
