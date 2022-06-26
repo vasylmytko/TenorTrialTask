@@ -23,11 +23,15 @@
 		AC72FFD32862347D008F6B21 /* FavouritesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFD22862347D008F6B21 /* FavouritesStorage.swift */; };
 		AC72FFD628623527008F6B21 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFD528623527008F6B21 /* CoreDataManager.swift */; };
 		AC72FFD928623AB2008F6B21 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AC72FFD828623AB2008F6B21 /* CombineCocoa */; };
-		AC72FFDB28623BA7008F6B21 /* FetchGIFsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFDA28623BA7008F6B21 /* FetchGIFsUseCase.swift */; };
+		AC72FFDB28623BA7008F6B21 /* DefaultFetchGIFsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FFDA28623BA7008F6B21 /* DefaultFetchGIFsUseCase.swift */; };
 		AC8B68F92868AF81004E8B2C /* TenorGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B68F82868AF81004E8B2C /* TenorGIF.swift */; };
 		AC8B68FB2868B035004E8B2C /* GIFSearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B68FA2868B035004E8B2C /* GIFSearchParameters.swift */; };
 		AC8B68FD2868B0E9004E8B2C /* UITabBarItem+Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B68FC2868B0E9004E8B2C /* UITabBarItem+Factories.swift */; };
 		AC8B68FF2868B128004E8B2C /* NSFetchedResultsController+Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B68FE2868B128004E8B2C /* NSFetchedResultsController+Factories.swift */; };
+		AC8B69012868B2FC004E8B2C /* PaginatedFetchGIFsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B69002868B2FC004E8B2C /* PaginatedFetchGIFsUseCaseTests.swift */; };
+		AC8B69042868B341004E8B2C /* PaginatedFetchGIFsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B69032868B341004E8B2C /* PaginatedFetchGIFsUseCase.swift */; };
+		AC8B69062868B368004E8B2C /* FetchGIFsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B69052868B368004E8B2C /* FetchGIFsUseCase.swift */; };
+		AC8B69082868D10D004E8B2C /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B69072868D10D004E8B2C /* ErrorMessage.swift */; };
 		AC8BA098285CE973009CF8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA097285CE973009CF8F1 /* AppDelegate.swift */; };
 		AC8BA09A285CE973009CF8F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */; };
 		AC8BA0A2285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0A0285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld */; };
@@ -78,11 +82,15 @@
 		AC72FFD0286231E7008F6B21 /* TenorGIFsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorGIFsResponse.swift; sourceTree = "<group>"; };
 		AC72FFD22862347D008F6B21 /* FavouritesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesStorage.swift; sourceTree = "<group>"; };
 		AC72FFD528623527008F6B21 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		AC72FFDA28623BA7008F6B21 /* FetchGIFsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGIFsUseCase.swift; sourceTree = "<group>"; };
+		AC72FFDA28623BA7008F6B21 /* DefaultFetchGIFsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFetchGIFsUseCase.swift; sourceTree = "<group>"; };
 		AC8B68F82868AF81004E8B2C /* TenorGIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorGIF.swift; sourceTree = "<group>"; };
 		AC8B68FA2868B035004E8B2C /* GIFSearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearchParameters.swift; sourceTree = "<group>"; };
 		AC8B68FC2868B0E9004E8B2C /* UITabBarItem+Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+Factories.swift"; sourceTree = "<group>"; };
 		AC8B68FE2868B128004E8B2C /* NSFetchedResultsController+Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFetchedResultsController+Factories.swift"; sourceTree = "<group>"; };
+		AC8B69002868B2FC004E8B2C /* PaginatedFetchGIFsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedFetchGIFsUseCaseTests.swift; sourceTree = "<group>"; };
+		AC8B69032868B341004E8B2C /* PaginatedFetchGIFsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedFetchGIFsUseCase.swift; sourceTree = "<group>"; };
+		AC8B69052868B368004E8B2C /* FetchGIFsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGIFsUseCase.swift; sourceTree = "<group>"; };
+		AC8B69072868D10D004E8B2C /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		AC8BA094285CE973009CF8F1 /* TenorTrialTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenorTrialTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC8BA097285CE973009CF8F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,7 +201,7 @@
 		AC6FA25C286516990014BCB2 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				AC72FFDA28623BA7008F6B21 /* FetchGIFsUseCase.swift */,
+				AC8B69022868B324004E8B2C /* FetchGIFsUseCase */,
 				AC6FA256286505EC0014BCB2 /* UpdateFavouritesUseCase.swift */,
 			);
 			path = UseCases;
@@ -205,6 +213,7 @@
 				AC72FFCE28623194008F6B21 /* GIF.swift */,
 				AC6FA25E286516C90014BCB2 /* GIFsPage.swift */,
 				AC8B68FA2868B035004E8B2C /* GIFSearchParameters.swift */,
+				AC8B69072868D10D004E8B2C /* ErrorMessage.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -256,6 +265,16 @@
 			path = Responses;
 			sourceTree = "<group>";
 		};
+		AC8B69022868B324004E8B2C /* FetchGIFsUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AC72FFDA28623BA7008F6B21 /* DefaultFetchGIFsUseCase.swift */,
+				AC8B69032868B341004E8B2C /* PaginatedFetchGIFsUseCase.swift */,
+				AC8B69052868B368004E8B2C /* FetchGIFsUseCase.swift */,
+			);
+			path = FetchGIFsUseCase;
+			sourceTree = "<group>";
+		};
 		AC8BA08B285CE973009CF8F1 = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				AC8BA0B1285CE97D009CF8F1 /* TenorTrialTaskTests.swift */,
+				AC8B69002868B2FC004E8B2C /* PaginatedFetchGIFsUseCaseTests.swift */,
 			);
 			path = TenorTrialTaskTests;
 			sourceTree = "<group>";
@@ -478,6 +498,7 @@
 				AC8B68FB2868B035004E8B2C /* GIFSearchParameters.swift in Sources */,
 				ACB56AF1286679F7008CD341 /* UICollectionViewLayout+Waterfall.swift in Sources */,
 				AC72FFD1286231E7008F6B21 /* TenorGIFsResponse.swift in Sources */,
+				AC8B69062868B368004E8B2C /* FetchGIFsUseCase.swift in Sources */,
 				AC72FFCF28623194008F6B21 /* GIF.swift in Sources */,
 				AC72FFD32862347D008F6B21 /* FavouritesStorage.swift in Sources */,
 				AC586E512867D4950087704D /* LayoutItemProvider.swift in Sources */,
@@ -489,11 +510,13 @@
 				AC9C90FE2867E1E400943DF2 /* Publisher+Extensions.swift in Sources */,
 				AC586E49286756730087704D /* StateInfoView.swift in Sources */,
 				AC6FA25F286516C90014BCB2 /* GIFsPage.swift in Sources */,
+				AC8B69042868B341004E8B2C /* PaginatedFetchGIFsUseCase.swift in Sources */,
 				AC8BA09A285CE973009CF8F1 /* SceneDelegate.swift in Sources */,
 				AC586E552867D9F40087704D /* UIView+Extensions.swift in Sources */,
-				AC72FFDB28623BA7008F6B21 /* FetchGIFsUseCase.swift in Sources */,
+				AC72FFDB28623BA7008F6B21 /* DefaultFetchGIFsUseCase.swift in Sources */,
 				AC8B68F92868AF81004E8B2C /* TenorGIF.swift in Sources */,
 				AC32B484285FC8E800AD9458 /* FavouritesViewController.swift in Sources */,
+				AC8B69082868D10D004E8B2C /* ErrorMessage.swift in Sources */,
 				AC8B68FF2868B128004E8B2C /* NSFetchedResultsController+Factories.swift in Sources */,
 				ACED9836285D0FDC004395B0 /* NetworkService.swift in Sources */,
 				AC8B68FD2868B0E9004E8B2C /* UITabBarItem+Factories.swift in Sources */,
@@ -505,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC8BA0B2285CE97D009CF8F1 /* TenorTrialTaskTests.swift in Sources */,
+				AC8B69012868B2FC004E8B2C /* PaginatedFetchGIFsUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

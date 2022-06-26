@@ -10,7 +10,7 @@ import Foundation
 protocol GIFsEndpoint {
     func fetch(
         searchParameters: GIFSearchParameters,
-        completion: @escaping (Result<GIFsCollection, Error>) -> Void
+        completion: @escaping (Result<GIFsCollection, NetworkError>) -> Void
     )
 }
 
@@ -24,7 +24,7 @@ final class DefaultGIFsEndpoint: GIFsEndpoint {
     
     func fetch(
         searchParameters: GIFSearchParameters,
-        completion: @escaping (Result<GIFsCollection, Error>) -> Void
+        completion: @escaping (Result<GIFsCollection, NetworkError>) -> Void
     ) {
         guard let url = buildURL(searchParameters: searchParameters) else {
             return
