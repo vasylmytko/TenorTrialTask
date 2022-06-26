@@ -105,14 +105,15 @@ final class DefaultSearchGIFsViewModel: SearchGIFsViewModel {
             .searchGIFs(useCaseProvider: { [weak self] in self?.fetchGIFsUseCase })
             .scan(.initial) { (result, nextSearchResult) -> SearchResult in
                 if result.searchTerm == nextSearchResult.searchTerm {
-                    return SearchResult(searchTerm: nextSearchResult.searchTerm, gifs: result.gifs + nextSearchResult.gifs)
+                    return SearchResult(
+                        searchTerm: nextSearchResult.searchTerm,
+                        gifsViewModels: result.gifsViewModels + nextSearchResult.gifsViewModels
+                    )
                 } else {
                     return nextSearchResult
                 }
             }
-            .map { searchResult in
-                SearchGIFs.State.results(searchResult.gifs.map { DefaultGIFCellViewModel(gif: $0) })
-            }
+            .map { SearchGIFs.State.results($0.gifsViewModels) }
             .catch { _ in Just(SearchGIFs.State.error(.errorInfo)) }
     
         Publishers.Merge(loading, loaded)
@@ -132,9 +133,9 @@ extension String {
 
 struct SearchResult {
     let searchTerm: String
-    let gifs: [GIF]
+    let gifsViewModels: [DefaultGIFCellViewModel]
     
-    static let initial = SearchResult(searchTerm: "", gifs: [])
+    static let initial = SearchResult(searchTerm: "", gifsViewModels: [])
 }
 
 extension Publisher where Output == String, Failure == Never {
@@ -147,7 +148,10 @@ extension Publisher where Output == String, Failure == Never {
                     useCaseProvider()?.execute(searchParamaters: .init(searchTerm: searchTerm, page: nil)) { result in
                         switch result {
                         case .success(let page):
-                            promise(.success(SearchResult(searchTerm: searchTerm, gifs: page.gifs)))
+                            promise(.success(SearchResult(
+                                searchTerm: searchTerm,
+                                gifsViewModels: page.gifs.map { DefaultGIFCellViewModel(gif: $0) })
+                            ))
                         case .failure(let error):
                             promise(.failure(error))
                         }

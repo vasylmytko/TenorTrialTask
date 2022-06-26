@@ -28,13 +28,20 @@ final class DefaultUpdateFavouritesUseCase: UpdateFavouritesUseCase {
     
     func execute(gif: GIF) {
         if gif.isFavourite {
-            favouritesStorage.remove(gif: gif)
+            makeFavourite(gif: gif)
         } else {
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: gif.url)
-                DispatchQueue.main.async {
-                    self.favouritesStorage.add(gif: mutated(gif) { $0.data = data })
-                }
+            favouritesStorage.remove(gif: gif)
+        }
+    }
+    
+    private func makeFavourite(gif: GIF) {
+        if favouritesStorage.isFavourite(gif: gif) {
+            return
+        }
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: gif.url)
+            DispatchQueue.main.async {
+                self.favouritesStorage.add(gif: mutated(gif) { $0.data = data })
             }
         }
     }

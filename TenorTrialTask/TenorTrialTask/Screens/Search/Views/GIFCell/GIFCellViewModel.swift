@@ -8,35 +8,26 @@
 import Foundation
 import Combine
 
-struct GIFCellModel {
-    struct Outputs {
-        let gifURL: AnyPublisher<URL, Never>
-        let isFavourite: AnyPublisher<Bool, Never>
-    }
-}
-
 protocol GIFCellViewModel: HashableByID {
     var gif: GIF { get }
-    var outputs: GIFCellModel.Outputs { get }
+    var isFavourite: AnyPublisher<Bool, Never> { get }
+    
     func toggleIsFavourite()
 }
 
 final class DefaultGIFCellViewModel: GIFCellViewModel {
-    let outputs: GIFCellModel.Outputs
     var id: String {
         return gif.id
     }
     
-    private(set) var gif: GIF
+    let isFavourite: AnyPublisher<Bool, Never>
     private let isFavouriteUpdate: CurrentValueSubject<Bool, Never>
+    private(set) var gif: GIF
     
     public init(gif: GIF) {
         self.gif = gif
         self.isFavouriteUpdate = .init(gif.isFavourite)
-        self.outputs = .init(
-            gifURL: Just(gif.url).eraseToAnyPublisher(),
-            isFavourite: isFavouriteUpdate.eraseToAnyPublisher()
-        )
+        self.isFavourite = isFavouriteUpdate.eraseToAnyPublisher()
     }
     
     func toggleIsFavourite() {

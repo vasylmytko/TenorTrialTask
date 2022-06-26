@@ -34,12 +34,12 @@ final class GIFCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        cancellable.removeAll()
         imageView.sd_cancelCurrentImageLoad()
     }
     
     func configure(with viewModel: DefaultGIFCellViewModel) {
-        viewModel.outputs.isFavourite
-            .removeDuplicates()
+        viewModel.isFavourite
             .toggle()
             .assign(to: \.isHidden, on: favouriteIcon)
             .store(in: &cancellable)
