@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DataService {
-    func fetch<T: Decodable>(type: T.Type, url: URL, completion: @escaping (Result<T, Error>) -> Void)
+    func fetch<T: Decodable>(type: T.Type, url: URL, completion: @escaping (Result<T, NetworkError>) -> Void)
 }
 
 final class DefaultDataService: DataService {
@@ -21,34 +21,32 @@ final class DefaultDataService: DataService {
         self.decoder = decoder
     }
     
-    func fetch<T>(type: T.Type, url: URL, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
+    func fetch<T>(type: T.Type, url: URL, completion: @escaping (Result<T, NetworkError>) -> Void) where T : Decodable {
         session.dataTask(with: url) { [weak self] (data, _, error) in
             guard let self = self else {
                 return
             }
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(.networkFailure(error)))
                 return
             }
             guard let data = data else {
-                completion(.failure(DefaultError.network))
+                completion(.failure(.dataNotFound))
                 return
             }
             do {
-                let object = try JSONSerialization.jsonObject(with: data, options: [])
-                let data = try JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted])
                 let decodedResponse = try self.decoder.decode(type, from: data)
-                
-                
                 completion(.success(decodedResponse))
             } catch let error {
-                completion(.failure(error))
+                completion(.failure(.decodingFailure(description: error.localizedDescription)))
             }
         }
         .resume()
     }
 }
 
-enum DefaultError: Error {
-    case network
+enum NetworkError: Error {
+    case dataNotFound
+    case decodingFailure(description: String)
+    case networkFailure(Error)
 }
