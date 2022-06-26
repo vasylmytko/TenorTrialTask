@@ -37,7 +37,6 @@
 		AC8BA0A2285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0A0285CE973009CF8F1 /* TenorTrialTask.xcdatamodeld */; };
 		AC8BA0A4285CE97C009CF8F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC8BA0A3285CE97C009CF8F1 /* Assets.xcassets */; };
 		AC8BA0A7285CE97C009CF8F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8BA0A5285CE97C009CF8F1 /* LaunchScreen.storyboard */; };
-		AC8BA0B2285CE97D009CF8F1 /* TenorTrialTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0B1285CE97D009CF8F1 /* TenorTrialTaskTests.swift */; };
 		AC8BA0BC285CE97D009CF8F1 /* TenorTrialTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0BB285CE97D009CF8F1 /* TenorTrialTaskUITests.swift */; };
 		AC8BA0BE285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0BD285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift */; };
 		AC8BA0CB285D01B7009CF8F1 /* SearchGIFsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BA0CA285D01B7009CF8F1 /* SearchGIFsViewController.swift */; };
@@ -99,7 +98,6 @@
 		AC8BA0A6285CE97C009CF8F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC8BA0A8285CE97C009CF8F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC8BA0AD285CE97D009CF8F1 /* TenorTrialTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TenorTrialTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC8BA0B1285CE97D009CF8F1 /* TenorTrialTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorTrialTaskTests.swift; sourceTree = "<group>"; };
 		AC8BA0B7285CE97D009CF8F1 /* TenorTrialTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TenorTrialTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC8BA0BB285CE97D009CF8F1 /* TenorTrialTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorTrialTaskUITests.swift; sourceTree = "<group>"; };
 		AC8BA0BD285CE97D009CF8F1 /* TenorTrialTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenorTrialTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -180,13 +178,13 @@
 			path = WaterfallLayout;
 			sourceTree = "<group>";
 		};
-		AC6FA25A286516540014BCB2 /* Screens */ = {
+		AC6FA25A286516540014BCB2 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				AC8BA0CC285D01DA009CF8F1 /* Search */,
 				AC32B487285FC8FE00AD9458 /* Favourites */,
 			);
-			path = Screens;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		AC6FA25B2865167D0014BCB2 /* Views */ = {
@@ -275,6 +273,15 @@
 			path = FetchGIFsUseCase;
 			sourceTree = "<group>";
 		};
+		AC8B69092868D5A7004E8B2C /* CompositionRoot */ = {
+			isa = PBXGroup;
+			children = (
+				AC8BA097285CE973009CF8F1 /* AppDelegate.swift */,
+				AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */,
+			);
+			path = CompositionRoot;
+			sourceTree = "<group>";
+		};
 		AC8BA08B285CE973009CF8F1 = {
 			isa = PBXGroup;
 			children = (
@@ -298,13 +305,12 @@
 		AC8BA096285CE973009CF8F1 /* TenorTrialTask */ = {
 			isa = PBXGroup;
 			children = (
+				AC8B69092868D5A7004E8B2C /* CompositionRoot */,
 				AC72FFCD28623183008F6B21 /* Domain */,
 				AC6FA260286517170014BCB2 /* DataAccess */,
-				AC6FA25A286516540014BCB2 /* Screens */,
+				AC6FA25A286516540014BCB2 /* Presentation */,
 				AC21CFEF2863A50000BF9E07 /* Helpers */,
 				AC6FA261286517640014BCB2 /* Resources */,
-				AC8BA097285CE973009CF8F1 /* AppDelegate.swift */,
-				AC8BA099285CE973009CF8F1 /* SceneDelegate.swift */,
 			);
 			path = TenorTrialTask;
 			sourceTree = "<group>";
@@ -312,7 +318,6 @@
 		AC8BA0B0285CE97D009CF8F1 /* TenorTrialTaskTests */ = {
 			isa = PBXGroup;
 			children = (
-				AC8BA0B1285CE97D009CF8F1 /* TenorTrialTaskTests.swift */,
 				AC8B69002868B2FC004E8B2C /* PaginatedFetchGIFsUseCaseTests.swift */,
 			);
 			path = TenorTrialTaskTests;
@@ -527,7 +532,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC8BA0B2285CE97D009CF8F1 /* TenorTrialTaskTests.swift in Sources */,
 				AC8B69012868B2FC004E8B2C /* PaginatedFetchGIFsUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
