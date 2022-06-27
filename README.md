@@ -10,7 +10,7 @@ Module contains entities, use cases that are isolated from other modules.
 Responsible for fetching data from endpoints and local storages.
 
 #### Presentation
-Contains all the code related to UI. The MVVM architecture is used for binding views with the view models.
+Contains all the code related to UI. The MVVM architecture is used for binding views with models.
 
 #### Composition Root
 All the logic related to linking modules is located in SceneDelegate because of the small number of screens in the project.
@@ -24,7 +24,7 @@ The application consists of two screens "Search" and "Favourites" which are embe
 Used for binding UIKit components with Combine Publishers. 
 
 #### [CombineExt](https://github.com/CombineCommunity/CombineExt.git)
-Provides additional operators and helpers to Combine publishers that are not provide by Apple.
+Provides additional operators and helpers to Combine publishers that are not provided by Apple.
 
 #### [SDWebImage](https://github.com/SDWebImage/SDWebImage.git)
 Used for loading and displaying gifs.
